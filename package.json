@@ -16,8 +16,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "yarn standard -- --fix",
+    "fix": "yarn standard -- --fix",
+    "lint": "yarn standard",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "standard": {
+    "ignore": [
+      "src/app/registerServiceWorker.js"
+    ]
   }
 }
