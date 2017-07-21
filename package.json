@@ -1,6 +1,7 @@
 {
   "name": "ink-frontend",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
