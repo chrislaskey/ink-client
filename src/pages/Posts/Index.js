@@ -1,20 +1,14 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
-import { map } from 'lodash'
-import { getPosts } from '../../api/posts'
-import Page from '../../components/Page'
+import { Route } from 'react-router-dom'
 
-export const Posts = ({data: {loading, posts}}) => {
-  const renderPosts = (items) => (
-    map(items, (item) => <li key={item.id}>{item.title}</li>)
-  )
+import AllPosts from './All'
+import OnePost from './One'
 
-  return (
-    <Page loading={loading}>
-      <h1>Posts</h1>
-      <ul>{renderPosts(posts)}</ul>
-    </Page>
-  )
-}
+export const Posts = ({ match }) => (
+  <div>
+    <Route exact path={match.url + '/:id'} component={OnePost} />
+    <Route exact path={match.url} component={AllPosts} />
+  </div>
+)
 
-export default graphql(getPosts)(Posts)
+export default Posts

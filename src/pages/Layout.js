@@ -18,7 +18,7 @@ const Layout = () => (
       <main>
         <Route exact path='/' component={Home} />
         <Route exact path='/about-us' component={About} />
-        <Route exact path='/posts' component={Posts} />
+        <Route path='/posts' component={Posts} />
       </main>
     </div>
   </div>

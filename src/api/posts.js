@@ -12,3 +12,16 @@ export const getPosts = gql`
     }
   }
 `
+
+export const getPost = gql`
+  query Post($id: Int!) {
+    post(id: $id){
+      id
+      title
+      body
+      user {
+        name
+      }
+    }
+  }
+`
