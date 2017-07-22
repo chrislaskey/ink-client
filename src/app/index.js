@@ -1,7 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import { ApolloProvider } from 'react-apollo'
 import { ConnectedRouter } from 'react-router-redux'
+import apolloClient from './apolloClient'
 import store, { history } from './store'
 import Layout from '../pages/Layout'
 import registerServiceWorker from './registerServiceWorker'
@@ -9,13 +10,11 @@ import registerServiceWorker from './registerServiceWorker'
 const target = document.getElementById('root')
 
 const App = (
-  <Provider store={store}>
+  <ApolloProvider store={store} client={apolloClient}>
     <ConnectedRouter history={history}>
-      <div>
-        <Layout />
-      </div>
+      <Layout />
     </ConnectedRouter>
-  </Provider>
+  </ApolloProvider>
 )
 
 render(App, target)
