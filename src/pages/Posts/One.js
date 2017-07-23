@@ -19,7 +19,9 @@ export const OnePost = ({data: {loading, post}}) => {
 }
 
 export default graphql(getPost, {
-  options: (props) => ({variables: {
-    id: props.match.params.id
-  }})
+  options: (props) => ({
+    variables: {
+      id: props.match.params.id
+    }
+  })
 })(OnePost)

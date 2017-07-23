@@ -57,3 +57,17 @@ export const createPost = gql`
   ${postReadAttributes}
   ${postWriteAttributes}
 `
+
+export const updatePost = gql`
+  mutation UpdatePost($id: Int!, $title: String!, $body: String!, $userId: Int!) {
+    update_post(id: $id, post: {title: $title, body: $body, userId: $userId}){
+      ...PostReadAttributes
+      ...PostWriteAttributes
+      user {
+        name
+      }
+    }
+  }
+  ${postReadAttributes}
+  ${postWriteAttributes}
+`
