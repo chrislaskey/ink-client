@@ -71,3 +71,17 @@ export const updatePost = gql`
   ${postReadAttributes}
   ${postWriteAttributes}
 `
+
+export const deletePost = gql`
+  mutation DeletePost($id: Int!) {
+    delete_post(id: $id){
+      ...PostReadAttributes
+      ...PostWriteAttributes
+      user {
+        name
+      }
+    }
+  }
+  ${postReadAttributes}
+  ${postWriteAttributes}
+`

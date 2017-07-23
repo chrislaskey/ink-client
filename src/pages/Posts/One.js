@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import { getPost } from '../../api/posts'
 import Page from '../../components/Page'
+import DeletePost from './_Delete'
 
 export const OnePost = ({data: {loading, post}}) => {
   if (!post) { return <Page loading /> }
@@ -16,6 +17,9 @@ export const OnePost = ({data: {loading, post}}) => {
       <div>{post.body}</div>
       <p>
         <Link to={'/posts/' + post.id + '/edit'}>Edit Post</Link>
+      </p>
+      <p>
+        <DeletePost post={post} />
       </p>
     </Page>
   )
