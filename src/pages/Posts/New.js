@@ -7,10 +7,11 @@ import Page from '../../components/Page'
 import Form from './_Form'
 
 export const NewPost = ({ mutate }) => {
-  const redirect = (response) => history.push('/posts/' + response.data.create_post.id)
-  const onSubmit = (values) => mutate({
-    variables: values
-  }).then(redirect)
+  const onSubmit = async (values) => {
+    const response = await mutate({ variables: values })
+
+    history.push('/posts/' + response.data.create_post.id)
+  }
 
   return (
     <Page>

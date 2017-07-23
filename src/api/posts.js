@@ -1,12 +1,12 @@
 import { gql } from 'react-apollo'
 
-const postReadAttributes = gql`
+export const postReadAttributes = gql`
   fragment PostReadAttributes on Post {
     id
   }
 `
 
-const postWriteAttributes = gql`
+export const postWriteAttributes = gql`
   fragment PostWriteAttributes on Post {
     title
     body

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
-export const PostsForm = ({handleSubmit, initialValues, pristine, submitting}) => (
+export const PostsForm = ({handleSubmit, pristine, submitting}) => (
   <form onSubmit={handleSubmit}>
     <div>
       <label htmlFor='title'>Title</label>

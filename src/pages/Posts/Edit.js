@@ -7,10 +7,10 @@ import Page from '../../components/Page'
 import Form from './_Form'
 
 export const EditPost = ({data: {loading, post}, mutate}) => {
-  const redirect = () => history.push('/posts/' + post.id)
-  const onSubmit = (values) => mutate({
-    variables: values
-  }).then(redirect)
+  const onSubmit = async (values) => {
+    await mutate({ variables: values })
+    history.push('/posts/' + post.id)
+  }
 
   if (!post) { return <Page loading /> }
 

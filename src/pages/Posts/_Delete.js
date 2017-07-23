@@ -5,12 +5,15 @@ import { clearCache } from '../../helpers/cache'
 import { deletePost } from '../../api/posts'
 
 export const DeletePost = ({ mutate, post }) => {
-  const onClickSuccess = (response) => clearCache() && history.push('/posts')
-  const onClick = () => mutate({
-    variables: {
-      id: parseInt(post.id, 10)
-    }
-  }).then(onClickSuccess)
+  const onClick = async () => {
+    await mutate({
+      variables: {
+        id: parseInt(post.id, 10)
+      }
+    })
+    clearCache()
+    history.push('/posts')
+  }
 
   return (
     <button onClick={onClick}>
