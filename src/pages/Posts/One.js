@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
+import { Link } from 'react-router-dom'
 import { getPost } from '../../api/posts'
 import Page from '../../components/Page'
 

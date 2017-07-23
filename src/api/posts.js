@@ -1,27 +1,59 @@
 import { gql } from 'react-apollo'
 
+const postReadAttributes = gql`
+  fragment PostReadAttributes on Post {
+    id
+  }
+`
+
+const postWriteAttributes = gql`
+  fragment PostWriteAttributes on Post {
+    title
+    body
+    user {
+      id
+    }
+  }
+`
+
 export const getPosts = gql`
   query Posts {
     posts{
-      id
-      title
-      body
+      ...PostReadAttributes
+      ...PostWriteAttributes
       user {
         name
       }
     }
   }
+  ${postReadAttributes}
+  ${postWriteAttributes}
 `
 
 export const getPost = gql`
   query Post($id: Int!) {
     post(id: $id){
-      id
-      title
-      body
+      ...PostReadAttributes
+      ...PostWriteAttributes
       user {
         name
       }
     }
   }
+  ${postReadAttributes}
+  ${postWriteAttributes}
+`
+
+export const createPost = gql`
+  mutation CreatePost($title: String!, $body: String!, $userId: Int!) {
+    create_post(title: $title, body: $body, userId: $userId){
+      ...PostReadAttributes
+      ...PostWriteAttributes
+      user {
+        name
+      }
+    }
+  }
+  ${postReadAttributes}
+  ${postWriteAttributes}
 `
