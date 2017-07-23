@@ -1,14 +1,16 @@
 import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
+import history from '../../app/history'
 import { getPost, updatePost } from '../../api/posts'
 import Page from '../../components/Page'
 import Form from './_Form'
 
 export const EditPost = ({data: {loading, post}, mutate}) => {
+  const redirect = () => history.push('/posts/' + post.id)
   const onSubmit = (values) => mutate({
     variables: values
-  })
+  }).then(redirect)
 
   if (!post) { return <Page loading /> }
 
