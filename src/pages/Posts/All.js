@@ -17,6 +17,9 @@ export const AllPosts = ({data: {loading, posts}, match}) => {
   return (
     <Page loading={loading}>
       <h1>Posts</h1>
+      <p>
+        <Link to='/posts/new'>New Post</Link>
+      </p>
       <ul>{renderPosts(posts)}</ul>
     </Page>
   )

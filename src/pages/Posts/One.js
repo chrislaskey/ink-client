@@ -14,6 +14,9 @@ export const OnePost = ({data: {loading, post}}) => {
       </h4>
       <h1>{post.title}</h1>
       <div>{post.body}</div>
+      <p>
+        <Link to={'/posts/' + post.id + '/edit'}>Edit Post</Link>
+      </p>
     </Page>
   )
 }
