@@ -4,11 +4,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "antd": "^2.12.2",
     "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.0.0",
+    "babel-plugin-import": "^1.2.1",
     "babel-preset-react-app": "^3.0.1",
     "babel-runtime": "6.23.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -27,6 +29,8 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "lodash": "^4.17.4",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
@@ -62,6 +66,8 @@
   },
   "standard": {
     "ignore": [
+      "config",
+      "scripts",
       "src/app/registerServiceWorker.js"
     ]
   },

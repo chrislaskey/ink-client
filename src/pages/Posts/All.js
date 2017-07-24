@@ -18,7 +18,7 @@ export const AllPosts = ({data: {loading, posts}, match}) => {
   return (
     <Page loading={loading}>
       <h1>Posts</h1>
-      <Button type="primary">Hello Button</Button>
+      <Button type='primary'>Hello Button</Button>
       <p>
         <Link to='/posts/new'>New Post</Link>
       </p>
