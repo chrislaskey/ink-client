@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+import { getCurrentUser } from '../../reducers/currentUser'
 
 export const PostsForm = ({handleSubmit, pristine, submitting}) => (
   <form onSubmit={handleSubmit}>
@@ -20,10 +21,10 @@ const Form = reduxForm({
   form: 'postsForm'
 })(PostsForm)
 
-const mapStateToProps = (_, props) => ({
+const mapStateToProps = (state, props) => ({
   initialValues: {
     ...(props.initialValues || {}),
-    userId: 1 // TODO: grab user id from state
+    userId: parseInt(getCurrentUser(state).id, 10)
   }
 })
 
