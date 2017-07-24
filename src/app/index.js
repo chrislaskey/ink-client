@@ -7,6 +7,7 @@ import history from './history'
 import store from './store'
 import Layout from '../pages/Layout'
 import registerServiceWorker from './registerServiceWorker'
+import logoutExpiredSessions from './logoutExpiredSessions'
 
 const target = document.getElementById('root')
 
@@ -20,3 +21,4 @@ const App = (
 
 render(App, target)
 registerServiceWorker()
+logoutExpiredSessions()
