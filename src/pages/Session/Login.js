@@ -17,9 +17,9 @@ export const Login = ({ currentUser, mutate, onLogin }) => {
 
   const onSubmit = async (values) => {
     const response = await mutate({ variables: values })
-    const { token, user } = response.data.login
+    const { token, token_expiration, user } = response.data.login
 
-    onLogin({ token, ...user })
+    onLogin({ token, token_expiration, ...user })
     history.push('/')
   }
 
