@@ -5,7 +5,7 @@ import './Layout.css'
 
 import About from './About/Index'
 import Home from './Home/Index'
-import Posts from './Posts/Index' // TODO: fix lower casing
+import Posts from './Posts'
 import Session from './Session'
 
 const Layout = () => (
