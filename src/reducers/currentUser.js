@@ -11,18 +11,22 @@ const hasExpired = (state) => {
 
 export const currentUserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CURRENT_USER_LOGIN':
-      return action.value
     case '@@INIT':
       if (hasExpired(state)) {
         return initialState
       }
       return state
+    case 'CURRENT_USER_LOGIN':
+      return action.value
+    case 'CURRENT_USER_LOGOUT':
+      return initialState
     default:
       return state
   }
 }
 
 export const getCurrentUser = (state) => state.currentUser
+
+export const getToken = (state) => state.currentUser.token
 
 export default currentUserReducer

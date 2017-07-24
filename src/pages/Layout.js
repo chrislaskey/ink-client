@@ -8,6 +8,8 @@ import Home from './Home/Index'
 import Posts from './Posts'
 import Session from './Session'
 
+import Logout from './Session/_Logout'
+
 const Layout = () => (
   <div className='Layout'>
     <header>
@@ -15,6 +17,7 @@ const Layout = () => (
       <Link to='/about-us'>About</Link>
       <Link to='/posts'>Posts</Link>
       <Link to='/session/login'>Login</Link>
+      <Logout />
     </header>
     <div>
       <main>
