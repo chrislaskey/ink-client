@@ -1,11 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
+import persistState from 'redux-localstorage'
 import thunk from 'redux-thunk'
 import history from './history'
 import rootReducer from '../reducers'
 
 const initialState = {}
-const enhancers = []
+const enhancers = [
+  persistState('currentUser', {key: 'ink'})
+]
 const middleware = [
   thunk,
   routerMiddleware(history)
