@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Form, Icon, Input, Button } from 'antd'
+import { Button, Form, Icon, Input } from 'antd'
 
 const EmailInput = (props) => (
   <Input

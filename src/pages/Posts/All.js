@@ -31,8 +31,8 @@ export const AllPosts = ({data: {loading, posts}, match}) => {
       </Breadcrumb>
       <h1>Posts</h1>
       <p>
-        <Link to='/posts/new'>
-          <Icon type='plus-square-o' />
+        <Link className='ant-btn' to='/posts/new'>
+          <Icon type='plus' />
           {' '}
           New Post
         </Link>

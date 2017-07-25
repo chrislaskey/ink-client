@@ -2,6 +2,7 @@ import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import history from '../../app/history'
+import { clearCache } from '../../helpers/cache'
 import { getPost, updatePost } from '../../api/posts'
 import Page from '../../components/Page'
 import Form from './_Form'
@@ -9,6 +10,7 @@ import Form from './_Form'
 export const EditPost = ({data: {loading, post}, mutate}) => {
   const onSubmit = async (values) => {
     await mutate({ variables: values })
+    clearCache()
     history.push('/posts/' + post.id)
   }
 
@@ -24,7 +26,7 @@ export const EditPost = ({data: {loading, post}, mutate}) => {
   return (
     <Page loading={loading}>
       <h4>
-        <Link to='/posts'>&laquo; Posts</Link>
+        <Link to={'/posts/' + post.id}>&laquo; Posts</Link>
       </h4>
       <h1>Update Post</h1>
       <Form initialValues={initialValues} onSubmit={onSubmit} />
