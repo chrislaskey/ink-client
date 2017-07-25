@@ -19,7 +19,7 @@ export const AllPosts = ({data: {loading, posts}, match}) => {
     <Page loading={loading}>
       <Breadcrumb>
         <Breadcrumb.Item>
-          <Link to='/home'>
+          <Link to='/'>
             <Icon type='home' />
             {' '}
             Home

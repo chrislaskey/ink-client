@@ -20,7 +20,7 @@ const Layout = () => (
       style={{ height: '100vh' }}
     >
       <div className='logo' style={{ height: '32px', background: '#333', borderRadius: '6px', margin: '16px' }}>
-        <Link to='/'>Ink</Link>
+        <Link to='/' />
       </div>
       <Menu id='main-nav' theme='dark' mode='inline' defaultSelectedKeys={['1']}>
         <Menu.Item key='1'>
