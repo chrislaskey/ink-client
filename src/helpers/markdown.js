@@ -34,3 +34,9 @@ export const createParser = (passedOptions = {}) => {
 
   return marked
 }
+
+export const addChecklists = (html) => (
+  html.replace(/<a/g, '<a target="_blank"')
+      .replace(/<li>\[\s\]/g, '<li class="check-box"><input onclick="return false" type="checkbox">')
+      .replace(/<li>\[x\]/g, '<li class="check-box"><input checked onclick="return false" type="checkbox">')
+)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { createParser } from '../helpers/markdown'
+import { addChecklists, createParser } from '../helpers/markdown'
 
 export const Markdown = ({ options, value }) => {
   const parser = createParser(options)
@@ -8,7 +8,7 @@ export const Markdown = ({ options, value }) => {
   return (
     <div
       className='markdown'
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: addChecklists(html) }}
     />
   )
 }
