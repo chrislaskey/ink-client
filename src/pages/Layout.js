@@ -25,7 +25,7 @@ const Layout = () => (
       <Menu id='main-nav' theme='dark' mode='inline' defaultSelectedKeys={['1']}>
         <Menu.Item key='1'>
           <Link to='/'>
-            <Icon type='video-camera' />
+            <Icon type='home' />
             <span className='nav-text'>
               Home
             </span>
