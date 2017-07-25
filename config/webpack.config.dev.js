@@ -210,7 +210,7 @@ module.exports = {
               // Available variables can be found at:
               //   https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
               modifyVars: {
-                "@font-size-base": "14px"
+                "@font-size-base": "12px"
               },
             },
           },

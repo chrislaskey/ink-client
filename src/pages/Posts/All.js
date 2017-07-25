@@ -4,7 +4,7 @@ import { map } from 'lodash'
 import { Link } from 'react-router-dom'
 import { getPosts } from '../../api/posts'
 import Page from '../../components/Page'
-import { Button } from 'antd'
+import { Breadcrumb, Icon } from 'antd'
 
 export const AllPosts = ({data: {loading, posts}, match}) => {
   const renderPosts = (items) => (
@@ -17,10 +17,25 @@ export const AllPosts = ({data: {loading, posts}, match}) => {
 
   return (
     <Page loading={loading}>
+      <Breadcrumb>
+        <Breadcrumb.Item>
+          <Link to='/home'>
+            <Icon type='home' />
+            {' '}
+            Home
+          </Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
+          Posts
+        </Breadcrumb.Item>
+      </Breadcrumb>
       <h1>Posts</h1>
-      <Button type='primary'>Hello Button</Button>
       <p>
-        <Link to='/posts/new'>New Post</Link>
+        <Link to='/posts/new'>
+          <Icon type='plus-square-o' />
+          {' '}
+          New Post
+        </Link>
       </p>
       <ul>{renderPosts(posts)}</ul>
     </Page>

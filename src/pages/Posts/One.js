@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { getPost } from '../../api/posts'
 import Page from '../../components/Page'
 import DeletePost from './_Delete'
+import Markdown from '../../components/Markdown'
 
 export const OnePost = ({data: {loading, post}}) => {
   if (!post) { return <Page loading /> }
@@ -14,13 +15,13 @@ export const OnePost = ({data: {loading, post}}) => {
         <Link to='/posts'>&laquo; Posts</Link>
       </h4>
       <h1>{post.title}</h1>
-      <div>{post.body}</div>
       <p>
         <Link to={'/posts/' + post.id + '/edit'}>Edit Post</Link>
-      </p>
-      <p>
         <DeletePost post={post} />
       </p>
+      <div className='post-body'>
+        <Markdown value={post.body} />
+      </div>
     </Page>
   )
 }
