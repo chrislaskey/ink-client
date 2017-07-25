@@ -1,8 +1,132 @@
-#main-nav a {
-  color: #fff;
+h1, h2, h3, h4, h5, h6, a, p, li, input, textarea, span, div {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a.ant-btn {
-  display: inline-block;
-  line-height: 2em;
+/* Structural Styles */
+
+.window-height {
+  height: 100vh;
 }
+
+/* Structure */
+
+#sidebar {
+  background: #fff;
+  border-right: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+  #sidebar .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-bottom: 48px;
+  }
+
+    #sidebar #main-nav {
+      padding-top: 30px;
+    }
+
+#content {
+  display: flex;
+  width: 100%;
+}
+
+.content-column {
+  background: #fff;
+  flex-direction: column;
+  display: flex;
+}
+
+#all-posts {
+  border-right: 1px solid #eee;
+  flex-shrink: 0;
+  width: 340px;
+}
+
+#one-post {
+  width: 100%;
+}
+
+.column-heading {
+  align-items: center;
+  background: #f8f8f9;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 30px;
+  width: 100%;
+}
+
+  .column-heading h3 {
+    color: #847895;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+.scroll-container {
+  height: 100%;
+  overflow: scroll;
+  width: 100%;
+}
+
+ul.posts {
+  margin: 0px;
+  padding: 0px;
+}
+
+  ul.posts li {
+    border-bottom: 1px solid #eee;
+  }
+
+    ul.posts li a {
+      align-items: center;
+      color: rgba(0, 0, 0, 0.65);
+      display: flex;
+      padding: 30px 30px;
+      width: 100%;
+    }
+
+/* Sidebar */
+
+#sidebar .ant-menu-inline {
+  border-right: none;
+}
+
+#sidebar .ant-menu-inline .ant-menu-item:after {
+  display: none;
+}
+
+#sidebar .ant-menu-inline .ant-menu-selected:after {
+  display: none;
+}
+
+  #sidebar .ant-menu-item > a,
+  #sidebar .ant-menu-submenu-title > a {
+    color: rgba(0, 0, 0, 0.65);
+    display: block;
+  }
+
+  #sidebar .ant-menu-inline .ant-menu-item-selected {
+    background-color: #ecf6fd;
+    background-color: #fff;
+    border-left: 3px solid #108ee9;
+  }
+
+#sidebar .ant-layout-sider-trigger {
+  background: #fff;
+  color: #333;
+}
+
+/* Content */
+
+a.ant-btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
