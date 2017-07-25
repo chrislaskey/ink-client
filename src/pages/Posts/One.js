@@ -5,6 +5,7 @@ import { getPost } from '../../api/posts'
 import Page from '../../components/Page'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
+import { Icon } from 'antd'
 
 export const OnePost = ({data: {loading, post}}) => {
   if (!post) { return <Page loading /> }
@@ -16,7 +17,14 @@ export const OnePost = ({data: {loading, post}}) => {
       </h4>
       <h1>{post.title}</h1>
       <p>
-        <Link to={'/posts/' + post.id + '/edit'}>Edit Post</Link>
+        <Link
+          to={'/posts/' + post.id + '/edit'}
+          className='ant-btn'
+        >
+          <Icon type='edit' />
+          {' '}
+          Edit
+        </Link>
         <DeletePost post={post} />
       </p>
       <div className='post-body'>

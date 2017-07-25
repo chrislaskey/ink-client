@@ -34,7 +34,7 @@ export const AllPosts = ({data: {loading, posts}, match}) => {
         <Link className='ant-btn' to='/posts/new'>
           <Icon type='plus' />
           {' '}
-          New Post
+          New
         </Link>
       </p>
       <ul>{renderPosts(posts)}</ul>
