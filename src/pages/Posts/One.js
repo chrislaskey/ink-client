@@ -1,14 +1,27 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
+import { connect } from 'react-redux'
+import { compose, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
-import { getPost } from '../../api/posts'
+import { getPost, updatePost } from '../../api/posts'
+import { getCurrentUserId } from '../../reducers/currentUser'
 import Page from '../../components/Page'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
 import { Icon } from 'antd'
 
-export const OnePost = ({data: {loading, post}}) => {
-  if (!post) { return <Page loading /> }
+export const OnePost = ({data: {loading, post}, mutate, userId}) => {
+  if (!post) {
+    return <Page loading />
+  }
+
+  const onCheck = (updatedBody) => mutate({
+    variables: {
+      id: parseInt(post.id, 10),
+      title: post.title,
+      body: updatedBody,
+      userId: userId
+    }
+  })
 
   return (
     <Page loading={loading}>
@@ -28,16 +41,25 @@ export const OnePost = ({data: {loading, post}}) => {
         <DeletePost post={post} />
       </p>
       <div className='post-body'>
-        <Markdown value={post.body} />
+        <Markdown onCheck={onCheck} value={post.body} />
       </div>
     </Page>
   )
 }
 
-export default graphql(getPost, {
-  options: (props) => ({
-    variables: {
-      id: props.match.params.id
-    }
-  })
-})(OnePost)
+const OnePostWithData = compose(
+  graphql(getPost, {
+    options: (props) => ({
+      variables: {
+        id: props.match.params.id
+      }
+    })
+  }),
+  graphql(updatePost)
+)(OnePost)
+
+const mapStateToProps = (state) => ({
+  userId: getCurrentUserId(state)
+})
+
+export default connect(mapStateToProps)(OnePostWithData)

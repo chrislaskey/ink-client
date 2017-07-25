@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { getCurrentUser } from '../../reducers/currentUser'
+import { getCurrentUserId } from '../../reducers/currentUser'
 import { Button, Form, Input } from 'antd'
 
 const TitleInput = (props) => (
@@ -49,7 +49,7 @@ const ReduxForm = reduxForm({
 const mapStateToProps = (state, props) => ({
   initialValues: {
     ...(props.initialValues || {}),
-    userId: parseInt(getCurrentUser(state).id, 10)
+    userId: getCurrentUserId(state)
   }
 })
 

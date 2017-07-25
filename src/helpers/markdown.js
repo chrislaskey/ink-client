@@ -37,6 +37,23 @@ export const createParser = (passedOptions = {}) => {
 
 export const addChecklists = (html) => (
   html.replace(/<a/g, '<a target="_blank"')
-      .replace(/<li>\[\s\]/g, '<li class="check-box"><input onclick="return false" type="checkbox">')
-      .replace(/<li>\[x\]/g, '<li class="check-box"><input checked onclick="return false" type="checkbox">')
+      .replace(/<li>\[\s\]/g, '<li class="check-box"><input type="checkbox">')
+      .replace(/<li>\[x\]/g, '<li class="check-box"><input checked type="checkbox">')
 )
+
+export const updateChecklist = (value, index, isChecked) => {
+  let matchIndex = -1
+
+  const markdownForCheckbox = /[-*] \[[vVxX ]\]/g
+  const result = value.replace(markdownForCheckbox, (match) => {
+    matchIndex = matchIndex + 1
+
+    if (matchIndex !== index) {
+      return match
+    }
+
+    return isChecked ? '- [x]' : '- [ ]'
+  })
+
+  return result
+}

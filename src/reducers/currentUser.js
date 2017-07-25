@@ -13,6 +13,8 @@ export const currentUserReducer = (state = initialState, action) => {
 
 export const getCurrentUser = (state) => state.currentUser
 
+export const getCurrentUserId = (state) => parseInt(getCurrentUser(state).id, 10)
+
 export const tokenHasExpired = (state) => {
   const expiration = state.currentUser.token_expiration
 
