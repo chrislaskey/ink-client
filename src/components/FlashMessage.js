@@ -25,7 +25,8 @@ class FlashMessage extends Component {
 
     return (
       <Alert
-        message={message.description || message.title}
+        message={message.title}
+        description={message.description}
         onClose={close}
         closable
         type={message.messageType}

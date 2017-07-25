@@ -32,7 +32,9 @@ export const NewPost = ({ flashMessage, mutate }) => {
 const NewPostWithData = graphql(createPost)(NewPost)
 
 const mapDispatchToProps = (dispatch) => ({
-  flashMessage: (text, type) => dispatch(createFlashMessage(text, type))
+  flashMessage: (title, type, description) => (
+    dispatch(createFlashMessage(title, type, description))
+  )
 })
 
 export default connect(undefined, mapDispatchToProps)(NewPostWithData)

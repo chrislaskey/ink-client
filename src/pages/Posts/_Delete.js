@@ -1,11 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
 import history from '../../app/history'
+import { createFlashMessage } from '../../actions/flashMessages'
 import { clearCache } from '../../helpers/cache'
 import { deletePost } from '../../api/posts'
 import { Button, Popconfirm } from 'antd'
 
-export const DeletePost = ({ mutate, post }) => {
+export const DeletePost = ({ flashMessage, mutate, post }) => {
   const onClick = async () => {
     await mutate({
       variables: {
@@ -13,6 +15,7 @@ export const DeletePost = ({ mutate, post }) => {
       }
     })
     clearCache()
+    flashMessage('Successfully deleted post', 'warning')
     history.push('/posts')
   }
 
@@ -29,4 +32,12 @@ export const DeletePost = ({ mutate, post }) => {
   )
 }
 
-export default graphql(deletePost)(DeletePost)
+const DeletePostWithData = graphql(deletePost)(DeletePost)
+
+const mapDispatchToProps = (dispatch) => ({
+  flashMessage: (title, type, description) => (
+    dispatch(createFlashMessage(title, type, description))
+  )
+})
+
+export default connect(undefined, mapDispatchToProps)(DeletePostWithData)

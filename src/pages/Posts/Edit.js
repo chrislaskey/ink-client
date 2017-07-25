@@ -1,16 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { compose, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import history from '../../app/history'
+import { createFlashMessage } from '../../actions/flashMessages'
 import { clearCache } from '../../helpers/cache'
 import { getPost, updatePost } from '../../api/posts'
 import Page from '../../components/Page'
 import Form from './_Form'
 
-export const EditPost = ({data: {loading, post}, mutate}) => {
+export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
   const onSubmit = async (values) => {
     await mutate({ variables: values })
     clearCache()
+    flashMessage('Successfully edited post', 'success')
     history.push('/posts/' + post.id)
   }
 
@@ -34,7 +37,7 @@ export const EditPost = ({data: {loading, post}, mutate}) => {
   )
 }
 
-export default compose(
+const EditPostWithData = compose(
   graphql(getPost, {
     options: (props) => ({
       variables: {
@@ -44,3 +47,11 @@ export default compose(
   }),
   graphql(updatePost)
 )(EditPost)
+
+const mapDispatchToProps = (dispatch) => ({
+  flashMessage: (title, type, description) => (
+    dispatch(createFlashMessage(title, type, description))
+  )
+})
+
+export default connect(undefined, mapDispatchToProps)(EditPostWithData)
