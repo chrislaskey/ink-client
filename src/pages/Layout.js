@@ -15,43 +15,9 @@ const { Content, Footer } = LayoutComponent
 const Layout = () => (
   <LayoutComponent className='ant-layout-has-sider window-height'>
     <Sidebar />
-    <div id='content'>
-      <div id='all-posts' className='content-column window-height'>
-        <div className='column-heading'>
-          <h3>Posts</h3>
-          <Tooltip placement='bottom' title='Create New Post'>
-            <Link className='ant-btn ant-btn-icon-only' to='/posts/new'>
-              <Icon type='edit' style={{ fontSize: '16px' }} />
-            </Link>
-          </Tooltip>
-        </div>
-        <div className='scroll-container'>
-          <ul className='posts'>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-            <li><a href='#'>Hello</a></li>
-          </ul>
-        </div>
-      </div>
-      <div id='one-post' className='content-column window-height'>
-        <div className='column-heading'>
-          <div />
-          <Avatar id='current-user-avatar' size="medium" icon="user" />
-        </div>
-      </div>
-    </div>
+    <Route exact path='/' component={Home} />
+    <Route path='/posts' component={Posts} />
+    <Route path='/session' component={Session} />
   </LayoutComponent>
 )
 

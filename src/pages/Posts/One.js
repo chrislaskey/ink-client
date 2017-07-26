@@ -7,12 +7,10 @@ import { getCurrentUserId } from '../../reducers/currentUser'
 import Page from '../../components/Page'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
-import { Icon } from 'antd'
+import { Avatar, Icon } from 'antd'
 
 export const OnePost = ({data: {loading, post}, mutate, userId}) => {
-  if (!post) {
-    return <Page loading />
-  }
+  if (loading) { return null }
 
   const onCheck = (updatedBody) => mutate({
     variables: {
@@ -24,26 +22,31 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
   })
 
   return (
-    <Page loading={loading}>
-      <h4>
-        <Link to='/posts'>&laquo; Posts</Link>
-      </h4>
-      <h1>{post.title}</h1>
-      <p>
-        <Link
-          to={'/posts/' + post.id + '/edit'}
-          className='ant-btn'
-        >
-          <Icon type='edit' />
-          {' '}
-          Edit
-        </Link>
-        <DeletePost post={post} />
-      </p>
-      <div className='post-body'>
-        <Markdown onCheck={onCheck} value={post.body} />
+    <div id='one-post' className='content-column window-height'>
+      <div className='column-heading'>
+        <div />
+        <Avatar id='current-user-avatar' size="medium" icon="user" />
       </div>
-    </Page>
+      <div className='scroll-container'>
+        <h1>{post.title}</h1>
+        <hr/>
+        <p>
+          <Link
+            to={'/posts/' + post.id + '/edit'}
+            className='ant-btn'
+          >
+            <Icon type='edit' />
+            {' '}
+            Edit
+          </Link>
+          <DeletePost post={post} />
+        </p>
+        <hr/>
+        <div className='post-body'>
+          <Markdown onCheck={onCheck} value={post.body} />
+        </div>
+      </div>
+    </div>
   )
 }
 

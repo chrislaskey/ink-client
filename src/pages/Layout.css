@@ -3,6 +3,11 @@ h1, h2, h3, h4, h5, h6, a, p, li, input, textarea, span, div {
   -moz-osx-font-smoothing: grayscale;
 }
 
+hr {
+  border: 1px solid #eee;
+  border-bottom: 0px;
+}
+
 /* Structural Styles */
 
 .window-height {
@@ -28,7 +33,7 @@ h1, h2, h3, h4, h5, h6, a, p, li, input, textarea, span, div {
       padding-top: 30px;
     }
 
-#content {
+#page {
   display: flex;
   width: 100%;
 }
@@ -112,7 +117,6 @@ ul.posts {
   }
 
   #sidebar .ant-menu-inline .ant-menu-item-selected {
-    background-color: #ecf6fd;
     background-color: #fff;
     border-left: 3px solid #108ee9;
   }
@@ -126,7 +130,7 @@ ul.posts {
 
 a.ant-btn {
   align-items: center;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
 }
 
