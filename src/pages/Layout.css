@@ -40,14 +40,17 @@ hr {
 
 .content-column {
   background: #fff;
+  border-right: 1px solid #eee;
   flex-direction: column;
   display: flex;
 }
 
+.content-column:last-child {
+  border-right: none;
+}
+
 #all-posts {
-  border-right: 1px solid #eee;
   flex-shrink: 0;
-  width: 340px;
 }
 
 #one-post {
@@ -65,6 +68,13 @@ hr {
   padding: 0 30px;
   width: 100%;
 }
+
+  .section-heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   .column-heading h3 {
     color: #847895;

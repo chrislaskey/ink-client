@@ -1,7 +1,8 @@
 import React from 'react'
+import { Heading, Section } from '../../components/Section'
 
 const HomeIndex = () => (
-  <h2>Home</h2>
+  <Section heading={<Heading><h3>Home</h3></Heading>} />
 )
 
 export default HomeIndex

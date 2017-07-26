@@ -31,7 +31,7 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
           </Link>
         </Menu.Item>
         <Menu.Item key='settings'>
-          <Link to='/'>
+          <Link to='/settings'>
             <Icon type='setting' />
             <span className='nav-text'>
               Settings
