@@ -11,7 +11,7 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
     className='window-height'
     collapsible
     collapsed={sidebarCollapsed}
-    onCollapse= { (collapsed) => toggleSidebar(collapsed) }
+    onCollapse={(collapsed) => toggleSidebar(collapsed)}
     width='240'
   >
     <div className='column-heading' />

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Avatar } from 'antd'
 import Page from '../../components/Page'
 
 import AllPosts from './_All'

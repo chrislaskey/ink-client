@@ -4,7 +4,6 @@ import { compose, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import { getPost, updatePost } from '../../api/posts'
 import { getCurrentUserId } from '../../reducers/currentUser'
-import Page from '../../components/Page'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
 import { Avatar, Icon } from 'antd'
@@ -25,11 +24,11 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
     <div id='one-post' className='content-column window-height'>
       <div className='column-heading'>
         <div />
-        <Avatar id='current-user-avatar' size="medium" icon="user" />
+        <Avatar id='current-user-avatar' size='medium' icon='user' />
       </div>
       <div className='scroll-container'>
         <h1>{post.title}</h1>
-        <hr/>
+        <hr />
         <p>
           <Link
             to={'/posts/' + post.id + '/edit'}
@@ -41,7 +40,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
           </Link>
           <DeletePost post={post} />
         </p>
-        <hr/>
+        <hr />
         <div className='post-body'>
           <Markdown onCheck={onCheck} value={post.body} />
         </div>

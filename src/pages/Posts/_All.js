@@ -3,8 +3,7 @@ import { graphql } from 'react-apollo'
 import { map } from 'lodash'
 import { Link } from 'react-router-dom'
 import { getPosts } from '../../api/posts'
-import Page from '../../components/Page'
-import { Breadcrumb, Icon, Tooltip } from 'antd'
+import { Icon, Tooltip } from 'antd'
 
 export const AllPosts = ({data: {loading, posts}, match}) => {
   const renderPosts = (items) => (
