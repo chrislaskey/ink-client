@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import { Layout as LayoutComponent, Icon, Menu, Tooltip } from 'antd'
+import { Layout as LayoutComponent, Avatar, Icon, Menu, Tooltip } from 'antd'
+import Sidebar from './_Sidebar'
 import './Layout.css'
 
 import Home from './Home/Index'
@@ -9,56 +10,11 @@ import Session from './Session'
 
 import Logout from './Session/_Logout'
 
-const { Content, Footer, Sider } = LayoutComponent
+const { Content, Footer } = LayoutComponent
 
 const Layout = () => (
-  <LayoutComponent style={{ height: '100vh' }}>
-    <Sider collapsible id='sidebar' className='window-height' width='240'>
-      <div className='column-heading' />
-      <div className='scroll-container'>
-        <Menu
-          id='main-nav'
-          mode='inline'
-          defaultSelectedKeys={['posts']}
-          defaultOpenKeys={['posts']}
-			  >
-          <Menu.Item key='0'>
-            <Link to='/'>
-              <Icon type='home' />
-              <span className='nav-text'>
-                Home
-              </span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key='settings'>
-            <Link to='/'>
-              <Icon type='setting' />
-              <span className='nav-text'>
-                Settings
-              </span>
-            </Link>
-          </Menu.Item>
-          <Menu.SubMenu
-            key='posts'
-            title={
-              <Link to='/posts'>
-                <Icon type='mail' />
-                <span className='nav-text'>Posts</span>
-              </Link>
-            }
-				  >
-            <Menu.ItemGroup key='g1' title='Item 1'>
-              <Menu.Item key='1'>Option 1</Menu.Item>
-              <Menu.Item key='2'>Option 2</Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.ItemGroup key='g2' title='Item 2'>
-              <Menu.Item key='3'>Option 3</Menu.Item>
-              <Menu.Item key='4'>Option 4</Menu.Item>
-            </Menu.ItemGroup>
-          </Menu.SubMenu>
-        </Menu>
-      </div>
-    </Sider>
+  <LayoutComponent className='ant-layout-has-sider window-height'>
+    <Sidebar />
     <div id='content'>
       <div id='all-posts' className='content-column window-height'>
         <div className='column-heading'>
@@ -90,20 +46,14 @@ const Layout = () => (
         </div>
       </div>
       <div id='one-post' className='content-column window-height'>
-        <div className='column-heading' />
+        <div className='column-heading'>
+          <div />
+          <Avatar id='current-user-avatar' size="medium" icon="user" />
+        </div>
       </div>
     </div>
   </LayoutComponent>
 )
-
-      // <Row type="flex" align="top" justify="space-between">
-      //   <Column id="all-posts" span={8} className="window-height">
-
-      //   </Column>
-      //   <Column id="one-post" span={16} className="window-height">
-
-      //   </Column>
-      // </Row>
 
 // const Layout = () => (
 //   <LayoutComponent>

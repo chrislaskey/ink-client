@@ -130,3 +130,6 @@ a.ant-btn {
   justify-content: center;
 }
 
+#current-user-avatar {
+  background-color: #aaa;
+}
