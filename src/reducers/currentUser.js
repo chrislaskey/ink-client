@@ -1,3 +1,5 @@
+import { isEqual } from 'lodash'
+
 const initialState = {
   preferences: {}
 }
@@ -23,6 +25,8 @@ export const currentUserReducer = (state = initialState, action) => {
       return state
   }
 }
+
+export const isLoggedIn = (state) => !isEqual(initialState, state.currentUser)
 
 export const getCurrentUser = (state) => state.currentUser
 

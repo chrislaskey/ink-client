@@ -41,7 +41,7 @@ export const PostsForm = ({handleSubmit, pristine, submitting}) => (
 )
 
 const ReduxForm = reduxForm({
-  form: 'sessionForm'
+  form: 'loginForm'
 })(PostsForm)
 
 export default ReduxForm

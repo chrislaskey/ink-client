@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
 import { updatePreferences } from '../actions/currentUser'
 import { getPreference } from '../reducers/currentUser'
+import Logout from './User/_Logout'
 
 export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
   <Layout.Sider
@@ -56,6 +57,9 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
             <Menu.Item key='4'>Option 4</Menu.Item>
           </Menu.ItemGroup>
         </Menu.SubMenu>
+        <Menu.Item key='logout'>
+          <Logout />
+        </Menu.Item>
       </Menu>
     </div>
   </Layout.Sider>

@@ -1,17 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
-import { isEmpty } from 'lodash'
 import { login as loginMutation } from '../../api/session'
 import { login as loginCurrentUser } from '../../actions/currentUser'
+import { isLoggedIn } from '../../reducers/currentUser'
 import history from '../../app/history'
 import Page from '../../components/Page'
 import Redirect from '../../components/Redirect'
-import Form from './_Form'
-import { getCurrentUser } from '../../reducers/currentUser'
+import LoginForm from './_LoginForm'
 
-export const Login = ({ currentUser, mutate, onLogin }) => {
-  if (!isEmpty(currentUser)) {
+export const Login = ({ loggedIn, mutate, onLogin }) => {
+  if (loggedIn) {
     return <Redirect to='/' />
   }
 
@@ -26,19 +25,19 @@ export const Login = ({ currentUser, mutate, onLogin }) => {
   return (
     <Page>
       <h1>Login</h1>
-      <Form onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} />
     </Page>
   )
 }
 
+const LoginWithData = graphql(loginMutation)(Login)
+
 const mapStateToProps = (state) => ({
-  currentUser: getCurrentUser(state)
+  loggedIn: isLoggedIn(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
   onLogin: (data) => dispatch(loginCurrentUser(data))
 })
-
-const LoginWithData = graphql(loginMutation)(Login)
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginWithData)
