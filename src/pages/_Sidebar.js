@@ -1,9 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
+import { updatePreferences } from '../actions/currentUser'
+import { getPreference } from '../reducers/currentUser'
 
-export const Sidebar = () => (
-  <Layout.Sider collapsible id='sidebar' className='window-height' width='240'>
+export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
+  <Layout.Sider
+    id='sidebar'
+    className='window-height'
+    collapsible
+    collapsed={sidebarCollapsed}
+    onCollapse= { (collapsed) => toggleSidebar(collapsed) }
+    width='240'
+  >
     <div className='column-heading' />
     <div className='scroll-container'>
       <Menu
@@ -51,4 +61,14 @@ export const Sidebar = () => (
   </Layout.Sider>
 )
 
-export default Sidebar
+const mapStateToProps = (state) => ({
+  sidebarCollapsed: getPreference(state, 'sidebarCollapsed') || false
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  toggleSidebar: (sidebar) => dispatch(
+    updatePreferences({ sidebarCollapsed: sidebar })
+  )
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
