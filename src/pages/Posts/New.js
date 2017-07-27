@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
-import { Link } from 'react-router-dom'
 import history from '../../app/history'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { createPost } from '../../api/posts'
@@ -10,6 +9,7 @@ import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
 export const NewPost = ({ flashMessage, mutate }) => {
+  const onCancel = () => history.push('/posts')
   const onSubmit = async (values) => {
     const response = await mutate({ variables: values })
 
@@ -20,11 +20,8 @@ export const NewPost = ({ flashMessage, mutate }) => {
 
   return (
     <Section padded id='new-post' heading={<Heading />}>
-      <h4>
-        <Link to='/posts'>&laquo; Posts</Link>
-      </h4>
       <h1>Create Post</h1>
-      <Form onSubmit={onSubmit} />
+      <Form onCancel={onCancel} onSubmit={onSubmit} />
     </Section>
   )
 }

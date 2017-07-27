@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { getCurrentUserId } from '../../reducers/currentUser'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, Popconfirm } from 'antd'
 
 const TitleInput = (props) => (
   <Input
@@ -21,7 +21,7 @@ const BodyTextarea = (props) => (
   />
 )
 
-export const PostsForm = ({handleSubmit, pristine, submitting}) => (
+export const PostsForm = ({handleSubmit, pristine, onCancel, submitting}) => (
   <Form onSubmit={handleSubmit}>
     <Form.Item>
       <label htmlFor='title'>Title</label>
@@ -39,6 +39,17 @@ export const PostsForm = ({handleSubmit, pristine, submitting}) => (
     >
       Submit
     </Button>
+    <Popconfirm
+      title='Confirm Cancel?'
+      onConfirm={onCancel}
+      onCancel={() => true}
+      okText='Leave Page'
+      cancelText='Stay on Page'
+    >
+      <Button>
+        Cancel
+      </Button>
+    </Popconfirm>
   </Form>
 )
 

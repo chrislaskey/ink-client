@@ -5,7 +5,7 @@ import history from '../../app/history'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { clearCache } from '../../helpers/cache'
 import { deletePost } from '../../api/posts'
-import { Button, Popconfirm } from 'antd'
+import { Button, Popconfirm, Tooltip } from 'antd'
 
 export const DeletePost = ({ flashMessage, mutate, post }) => {
   const onClick = async () => {
@@ -20,15 +20,17 @@ export const DeletePost = ({ flashMessage, mutate, post }) => {
   }
 
   return (
-    <Popconfirm
-      title='Are you sure delete this item?'
-      onConfirm={onClick}
-      onCancel={() => true}
-      okText='Yes'
-      cancelText='No'
-    >
-      <Button icon='delete' />
-    </Popconfirm>
+    <Tooltip placement='bottomRight' title='Delete Post'>
+      <Popconfirm
+        title='Confirm Deletion?'
+        onConfirm={onClick}
+        onCancel={() => true}
+        okText='Delete'
+        cancelText='Cancel'
+      >
+        <Button icon='delete' />
+      </Popconfirm>
+    </Tooltip>
   )
 }
 

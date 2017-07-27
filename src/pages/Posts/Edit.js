@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, graphql } from 'react-apollo'
-import { Link } from 'react-router-dom'
 import history from '../../app/history'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { clearCache } from '../../helpers/cache'
@@ -10,6 +9,7 @@ import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
 export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
+  const onCancel = () => history.push('/posts/' + post.id)
   const onSubmit = async (values) => {
     await mutate({ variables: values })
     clearCache()
@@ -30,11 +30,8 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
 
   return (
     <Section padded id='edit-post' heading={<Heading />}>
-      <h4>
-        <Link to={'/posts/' + post.id}>&laquo; Posts</Link>
-      </h4>
       <h1>Update Post</h1>
-      <Form initialValues={initialValues} onSubmit={onSubmit} />
+      <Form initialValues={initialValues} onCancel={onCancel} onSubmit={onSubmit} />
     </Section>
   )
 }
