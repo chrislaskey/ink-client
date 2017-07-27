@@ -7,7 +7,7 @@ import { getCurrentUserId } from '../../reducers/currentUser'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
 import { Heading, Section } from '../../components/Section'
-import { Icon } from 'antd'
+import { Button, Icon } from 'antd'
 
 export const OnePost = ({data: {loading, post}, mutate, userId}) => {
   if (loading) {
@@ -25,15 +25,18 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
 
   const heading = (
     <Heading>
+      <div />
       <div className='post-actions'>
-        <Link
-          to={'/posts/' + post.id + '/edit'}
-          className='ant-btn'
-        >
-          <Icon type='edit' />
-          <span> Edit</span>
-        </Link>
-        <DeletePost post={post} />
+        <Button.Group>
+          <Link
+            to={'/posts/' + post.id + '/edit'}
+            className='ant-btn'
+          >
+            <Icon type='edit' />
+            <span> Edit</span>
+          </Link>
+          <DeletePost post={post} />
+        </Button.Group>
       </div>
     </Heading>
   )
