@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 import { isLoggedIn } from '../reducers/currentUser'
 import { Layout as LayoutComponent } from 'antd'
+import FlashMessages from '../components/FlashMessages'
 import Sidebar from './_Sidebar'
 import './Layout.css'
 
@@ -18,6 +19,7 @@ const Layout = ({ loggedIn }) => {
 
   return (
     <LayoutComponent className='ant-layout-has-sider window-height'>
+      <FlashMessages />
       <Sidebar />
       <Route exact path='/' component={Home} />
       <Route path='/posts' component={Posts} />

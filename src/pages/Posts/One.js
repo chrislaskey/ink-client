@@ -7,7 +7,7 @@ import { getCurrentUserId } from '../../reducers/currentUser'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
 import { Heading, Section } from '../../components/Section'
-import { Avatar, Icon } from 'antd'
+import { Icon } from 'antd'
 
 export const OnePost = ({data: {loading, post}, mutate, userId}) => {
   if (loading) { return null }
@@ -33,7 +33,6 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
         </Link>
         <DeletePost post={post} />
       </div>
-      <Avatar id='current-user-avatar' size='medium' icon='user' />
     </Heading>
   )
 

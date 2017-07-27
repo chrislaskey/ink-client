@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { connect } from 'react-redux'
-import { Alert } from 'antd'
+import { notification } from 'antd'
 import { closeFlashMessage, showFlashMessage } from '../actions/flashMessages'
 
 class FlashMessage extends Component {
@@ -23,15 +23,15 @@ class FlashMessage extends Component {
       onClose(message.id)
     }
 
-    return (
-      <Alert
-        message={message.title}
-        description={message.description}
-        onClose={close}
-        closable
-        type={message.messageType}
-      />
-    )
+    notification.open({
+      description: message.description,
+      message: message.title,
+      onClose: close,
+      placement: 'bottomRight',
+      type: message.messageType
+    })
+
+    return null
   }
 }
 

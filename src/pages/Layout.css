@@ -14,6 +14,19 @@ hr {
   height: 100vh;
 }
 
+.full-height {
+  align-self: stretch;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.center-children {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 /* Structure */
 
 #sidebar {
@@ -147,4 +160,9 @@ a.ant-btn {
 
 #current-user-avatar {
   background-color: #aaa;
+}
+
+.unselected-post-message {
+  color: rgba(0, 0, 0, 0.15);
+  font-size: 28px;
 }
