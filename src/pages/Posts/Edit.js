@@ -29,7 +29,7 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
   }
 
   return (
-    <Section id='edit-post' heading={<Heading />}>
+    <Section padded id='edit-post' heading={<Heading />}>
       <h4>
         <Link to={'/posts/' + post.id}>&laquo; Posts</Link>
       </h4>

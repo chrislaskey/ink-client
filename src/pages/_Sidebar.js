@@ -15,7 +15,7 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
     onCollapse={(collapsed) => toggleSidebar(collapsed)}
     width='240'
   >
-    <div className='column-heading' />
+    <div className='section-heading' />
     <div className='scroll-container'>
       <Menu
         id='main-nav'

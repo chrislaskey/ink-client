@@ -39,9 +39,8 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
   )
 
   return (
-    <Section id='one-post' heading={heading}>
+    <Section padded id='one-post' heading={heading}>
       <h1>{post.title}</h1>
-      <hr />
       <div className='post-body'>
         <Markdown onCheck={onCheck} value={post.body} />
       </div>

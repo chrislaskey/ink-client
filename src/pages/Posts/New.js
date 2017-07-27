@@ -19,7 +19,7 @@ export const NewPost = ({ flashMessage, mutate }) => {
   }
 
   return (
-    <Section id='new-post' heading={<Heading />}>
+    <Section padded id='new-post' heading={<Heading />}>
       <h4>
         <Link to='/posts'>&laquo; Posts</Link>
       </h4>

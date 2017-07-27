@@ -1,7 +1,8 @@
 import React from 'react'
 import { Icon } from 'antd'
+import classnames from 'classnames'
 
-export const Section = ({ children, heading, id, loading, width }) => {
+export const Section = ({ children, heading, id, loading, padded, width }) => {
   const spinner = (
     <div className='full-height center-children'>
       <Icon className='section-loading-icon' type='loading' />
@@ -11,13 +12,13 @@ export const Section = ({ children, heading, id, loading, width }) => {
   return (
     <div
       id={id}
-      className='content-column window-height'
+      className='section window-height'
       style={{ width: width || '100%' }}
     >
-      <div className='column-heading'>
+      <div className='section-heading'>
         { heading }
       </div>
-      <div className='scroll-container'>
+      <div className={classnames('section-body', 'scroll-container', {'padded': padded})}>
         { loading ? spinner : children }
       </div>
     </div>
@@ -25,7 +26,7 @@ export const Section = ({ children, heading, id, loading, width }) => {
 }
 
 export const Heading = ({ children }) => (
-  <div className='section-heading'>
+  <div className='section-heading-content'>
     {children}
   </div>
 )
