@@ -1,19 +1,28 @@
 import React from 'react'
+import { Icon } from 'antd'
 
-export const Section = ({ children, heading, id, width }) => (
-  <div
-    id={id}
-    className='content-column window-height'
-    style={{ width: width || '100%' }}
-  >
-    <div className='column-heading'>
-      { heading }
+export const Section = ({ children, heading, id, loading, width }) => {
+  const spinner = (
+    <div className='full-height center-children'>
+      <Icon className='section-loading-icon' type='loading' />
     </div>
-    <div className='scroll-container'>
-      { children }
+  )
+
+  return (
+    <div
+      id={id}
+      className='content-column window-height'
+      style={{ width: width || '100%' }}
+    >
+      <div className='column-heading'>
+        { heading }
+      </div>
+      <div className='scroll-container'>
+        { loading ? spinner : children }
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export const Heading = ({ children }) => (
   <div className='section-heading'>

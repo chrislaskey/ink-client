@@ -6,7 +6,7 @@ import history from '../../app/history'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { clearCache } from '../../helpers/cache'
 import { getPost, updatePost } from '../../api/posts'
-import Page from '../../components/Page'
+import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
 export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
@@ -17,7 +17,9 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
     history.push('/posts/' + post.id)
   }
 
-  if (!post) { return <Page loading /> }
+  if (loading) {
+    return <Section heading={<Heading />} />
+  }
 
   const initialValues = {
     id: parseInt(post.id, 10),
@@ -27,13 +29,13 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
   }
 
   return (
-    <Page loading={loading}>
+    <Section id='edit-post' heading={<Heading />}>
       <h4>
         <Link to={'/posts/' + post.id}>&laquo; Posts</Link>
       </h4>
       <h1>Update Post</h1>
       <Form initialValues={initialValues} onSubmit={onSubmit} />
-    </Page>
+    </Section>
   )
 }
 

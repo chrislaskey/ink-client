@@ -10,7 +10,9 @@ import { Heading, Section } from '../../components/Section'
 import { Icon } from 'antd'
 
 export const OnePost = ({data: {loading, post}, mutate, userId}) => {
-  if (loading) { return null }
+  if (loading) {
+    return <Section heading={<Heading />} />
+  }
 
   const onCheck = (updatedBody) => mutate({
     variables: {

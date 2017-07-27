@@ -102,22 +102,10 @@ hr {
   width: 100%;
 }
 
-ul.posts {
-  margin: 0px;
-  padding: 0px;
-}
-
-  ul.posts li {
-    border-bottom: 1px solid #eee;
+  .section-loading-icon {
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 32px;
   }
-
-    ul.posts li a {
-      align-items: center;
-      color: rgba(0, 0, 0, 0.65);
-      display: flex;
-      padding: 30px 30px;
-      width: 100%;
-    }
 
 /* Sidebar */
 
@@ -150,7 +138,7 @@ ul.posts {
   color: #333;
 }
 
-/* Content */
+/* Universal Content */
 
 a.ant-btn {
   align-items: center;
@@ -158,11 +146,26 @@ a.ant-btn {
   justify-content: center;
 }
 
-#current-user-avatar {
-  background-color: #aaa;
-}
+/* Specific Content */
 
 .unselected-post-message {
   color: rgba(0, 0, 0, 0.15);
   font-size: 28px;
 }
+
+ul.posts {
+  margin: 0px;
+  padding: 0px;
+}
+
+  ul.posts li {
+    border-bottom: 1px solid #eee;
+  }
+
+    ul.posts li a {
+      align-items: center;
+      color: rgba(0, 0, 0, 0.65);
+      display: flex;
+      padding: 30px 30px;
+      width: 100%;
+    }

@@ -6,7 +6,7 @@ import history from '../../app/history'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { createPost } from '../../api/posts'
 import { clearCache } from '../../helpers/cache'
-import Page from '../../components/Page'
+import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
 export const NewPost = ({ flashMessage, mutate }) => {
@@ -19,13 +19,13 @@ export const NewPost = ({ flashMessage, mutate }) => {
   }
 
   return (
-    <Page>
+    <Section id='new-post' heading={<Heading />}>
       <h4>
         <Link to='/posts'>&laquo; Posts</Link>
       </h4>
       <h1>Create Post</h1>
       <Form onSubmit={onSubmit} />
-    </Page>
+    </Section>
   )
 }
 
