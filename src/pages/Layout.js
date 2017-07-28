@@ -18,7 +18,7 @@ const Layout = ({ loggedIn }) => {
   }
 
   return (
-    <LayoutComponent className='ant-layout-has-sider window-height'>
+    <LayoutComponent className='ant-layout-has-sider window-height theme-dark'>
       <FlashMessages />
       <Sidebar />
       <Route exact path='/' component={Home} />

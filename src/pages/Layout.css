@@ -4,7 +4,7 @@ h1, h2, h3, h4, h5, h6, a, p, li, input, textarea, span, div {
 }
 
 hr {
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 0px;
 }
 
@@ -34,8 +34,8 @@ hr {
 /* Structure */
 
 #sidebar {
-  background: #fff;
-  border-right: 1px solid #eee;
+  background: inherit;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
 }
 
@@ -56,8 +56,8 @@ hr {
 }
 
 .section {
-  background: #fff;
-  border-right: 1px solid #eee;
+  background: inherit;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
   flex-direction: column;
   display: flex;
 }
@@ -68,8 +68,8 @@ hr {
 
   .section-heading {
     align-items: center;
-    background: #f8f8f9;
-    border-bottom: 1px solid #eee;
+    background: rgba(0, 0, 0, 0.025);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;
@@ -117,7 +117,9 @@ hr {
 
 /* Sidebar */
 
-#sidebar .ant-menu-inline {
+#sidebar .ant-menu-inline,
+#sidebar .ant-menu-vertical {
+  background: inherit;
   border-right: none;
 }
 
@@ -137,12 +139,12 @@ hr {
 
   #sidebar .ant-menu-inline .ant-menu-item-selected,
   #sidebar .ant-menu-vertical .ant-menu-item-selected {
-    background-color: #fff;
+    background-color: inherit;
     border-left: 3px solid #108ee9;
   }
 
 #sidebar .ant-layout-sider-trigger {
-  background: #fff;
+  background: inherit;
   color: #333;
 }
 
@@ -167,7 +169,7 @@ ul.posts {
 }
 
   ul.posts li {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
     ul.posts li a {
@@ -182,3 +184,27 @@ ul.posts {
       ul.posts li a:focus {
         text-decoration: none;
       }
+
+/* Themes */
+
+.theme-light {
+  background: #fff;
+}
+
+.theme-dark {
+  background: #222;
+}
+
+  .theme-dark #sidebar .section-heading {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .theme-dark #sidebar,
+  .theme-dark #sidebar a,
+  .theme-dark #sidebar .ant-layout-sider-trigger {
+    color: #fff;
+  }
+
+  .theme-dark #page {
+    background: #fff;
+  }
