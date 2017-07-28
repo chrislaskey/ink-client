@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
 import { updatePreferences } from '../actions/currentUser'
 import { getPreference } from '../reducers/currentUser'
-import Logout from './User/_Logout'
 
 export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
   <Layout.Sider
@@ -20,7 +19,7 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
       <Menu
         id='main-nav'
         mode='inline'
-        defaultSelectedKeys={['posts']}
+        defaultSelectedKeys={['']}
         defaultOpenKeys={['posts']}
       >
         <Menu.Item key='0'>
@@ -31,6 +30,14 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
             </span>
           </Link>
         </Menu.Item>
+        <Menu.Item key='posts'>
+          <Link to='/posts'>
+            <Icon type='mail' />
+            <span className='nav-text'>
+              Posts
+            </span>
+          </Link>
+        </Menu.Item>
         <Menu.Item key='settings'>
           <Link to='/settings'>
             <Icon type='setting' />
@@ -38,27 +45,6 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
               Settings
             </span>
           </Link>
-        </Menu.Item>
-        <Menu.SubMenu
-          key='posts'
-          title={
-            <Link to='/posts'>
-              <Icon type='mail' />
-              <span className='nav-text'>Posts</span>
-            </Link>
-          }
-        >
-          <Menu.ItemGroup key='g1' title='Item 1'>
-            <Menu.Item key='1'>Option 1</Menu.Item>
-            <Menu.Item key='2'>Option 2</Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup key='g2' title='Item 2'>
-            <Menu.Item key='3'>Option 3</Menu.Item>
-            <Menu.Item key='4'>Option 4</Menu.Item>
-          </Menu.ItemGroup>
-        </Menu.SubMenu>
-        <Menu.Item key='logout'>
-          <Logout />
         </Menu.Item>
       </Menu>
     </div>

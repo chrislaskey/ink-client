@@ -27,6 +27,10 @@ hr {
   justify-content: center;
 }
 
+.padded {
+  padding: 30px;
+}
+
 /* Structure */
 
 #sidebar {

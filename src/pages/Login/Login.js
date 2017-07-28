@@ -23,9 +23,11 @@ export const Login = ({ loggedIn, mutate, onLogin }) => {
   }
 
   return (
-    <Page>
-      <h1>Login</h1>
-      <LoginForm onSubmit={onSubmit} />
+    <Page className='center-children window-height'>
+      <div className='padded' style={{ backgroundColor: '#fff' }}>
+        <h1>Login</h1>
+        <LoginForm onSubmit={onSubmit} />
+      </div>
     </Page>
   )
 }
