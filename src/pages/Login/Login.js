@@ -19,7 +19,7 @@ export const Login = ({ loggedIn, mutate, onLogin }) => {
     const { token, token_expiration, user } = response.data.login
 
     onLogin({ token, token_expiration, ...user })
-    history.push('/')
+    history.push('/posts')
   }
 
   return (

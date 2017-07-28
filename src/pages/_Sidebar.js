@@ -19,7 +19,7 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
       <Menu
         id='main-nav'
         mode='inline'
-        defaultSelectedKeys={['']}
+        defaultSelectedKeys={['posts']}
         defaultOpenKeys={['posts']}
       >
         <Menu.Item key='0'>
