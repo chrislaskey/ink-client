@@ -21,7 +21,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600, titleBarStyle: 'hidden'})
 
   /* Customized Code for Create React App integration */
   let startUrl
