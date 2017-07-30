@@ -9,9 +9,11 @@ import Page from '../../components/Page'
 import Redirect from '../../components/Redirect'
 import LoginForm from './_LoginForm'
 
-export const Login = ({ loggedIn, mutate, onLogin }) => {
+export const Login = ({ location, loggedIn, mutate, onLogin }) => {
+  const landingPage = location.pathname !== '/' ? location.pathname : '/posts'
+
   if (loggedIn) {
-    return <Redirect to='/' />
+    return <Redirect to={landingPage} />
   }
 
   const onSubmit = async (values) => {
@@ -19,7 +21,7 @@ export const Login = ({ loggedIn, mutate, onLogin }) => {
     const { token, token_expiration, user } = response.data.login
 
     onLogin({ token, token_expiration, ...user })
-    history.push('/posts')
+    history.push(landingPage)
   }
 
   return (

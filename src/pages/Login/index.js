@@ -9,7 +9,7 @@ export const Login = () => (
   <LayoutComponent className='window-height'>
     <FlashMessages />
     <Switch>
-      <Route path='/' component={LoginPage} />
+      <Route component={LoginPage} />
     </Switch>
   </LayoutComponent>
 )
