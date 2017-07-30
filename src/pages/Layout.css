@@ -185,6 +185,21 @@ ul.posts {
         text-decoration: none;
       }
 
+.post-body ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+  .post-body ul li ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
+
+  .post-body .task-list-item {
+    margin-left: 15px;
+  }
+
 form.post textarea[name='body'] {
   font-family: Consolas, Menlo, Courier, monospace;
 }
