@@ -12,7 +12,7 @@ import Login from './Login'
 import Posts from './Posts'
 import Settings from './Settings'
 
-const Layout = ({ loggedIn }) => {
+export const Layout = ({ loggedIn }) => {
   if (!loggedIn) {
     return <Login />
   }
@@ -27,6 +27,8 @@ const Layout = ({ loggedIn }) => {
     </LayoutComponent>
   )
 }
+
+Layout.displayName = 'Layout'
 
 const mapStateToProps = (state) => ({
   loggedIn: isLoggedIn(state)

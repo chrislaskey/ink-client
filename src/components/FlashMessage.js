@@ -35,6 +35,8 @@ class FlashMessage extends Component {
   }
 }
 
+FlashMessage.displayName = 'FlashMessage'
+
 const mapStateToProps = () => ({
 
 })

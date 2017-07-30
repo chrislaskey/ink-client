@@ -18,6 +18,7 @@
     "classnames": "^2.2.5",
     "css-loader": "0.28.4",
     "dotenv": "4.0.0",
+    "enzyme": "^2.9.1",
     "eslint": "3.19.0",
     "eslint-config-react-app": "^1.0.5",
     "eslint-loader": "1.7.1",
@@ -48,6 +49,7 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "react-router-redux": "^5.0.0-alpha.6",
+    "react-test-renderer": "^15.6.1",
     "redux": "^3.7.2",
     "redux-form": "^7.0.1",
     "redux-localstorage": "^0.4.1",
@@ -73,7 +75,8 @@
     "ignore": [
       "config",
       "scripts",
-      "src/app/registerServiceWorker.js"
+      "src/app/registerServiceWorker.js",
+      "src/**/*.test.js"
     ]
   },
   "jest": {
@@ -81,7 +84,8 @@
       "src/**/*.{js,jsx}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/setup.js"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",

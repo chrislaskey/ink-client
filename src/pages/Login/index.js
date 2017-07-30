@@ -14,4 +14,6 @@ export const Login = () => (
   </LayoutComponent>
 )
 
+Login.displayName = 'Login'
+
 export default Login

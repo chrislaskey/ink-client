@@ -51,6 +51,8 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
   </Layout.Sider>
 )
 
+Sidebar.displayName = 'Sidebar'
+
 const mapStateToProps = (state) => ({
   sidebarCollapsed: getPreference(state, 'sidebarCollapsed') || false
 })
