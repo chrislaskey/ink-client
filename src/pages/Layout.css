@@ -185,6 +185,10 @@ ul.posts {
         text-decoration: none;
       }
 
+form.post textarea[name='body'] {
+  font-family: Consolas, Menlo, Courier, monospace;
+}
+
 /* Themes */
 
 .theme-light {

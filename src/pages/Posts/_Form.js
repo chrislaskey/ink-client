@@ -22,7 +22,7 @@ const BodyTextarea = (props) => (
 )
 
 export const PostsForm = ({handleSubmit, pristine, onCancel, submitting}) => (
-  <Form onSubmit={handleSubmit}>
+  <Form className='post' onSubmit={handleSubmit}>
     <Form.Item>
       <label htmlFor='title'>Title</label>
       <Field name='title' component={TitleInput} />

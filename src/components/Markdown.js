@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { findDOMNode } from 'react-dom'
 import { map } from 'lodash'
-import { addChecklists, createParser, updateChecklist } from '../helpers/markdown'
+import { createParser, updateChecklist } from '../helpers/markdown'
+import './Markdown.css'
 
 class Markdown extends Component {
   constructor (props) {
@@ -19,7 +20,7 @@ class Markdown extends Component {
 
   bindChecklists () {
     if (this.props.onCheck) {
-      const items = findDOMNode(this).querySelectorAll('.check-box input')
+      const items = findDOMNode(this).querySelectorAll('input[type=checkbox]')
       const onClick = (itemIndex, event) => {
         const isChecked = event.target.checked
         const updated = updateChecklist(this.markdown, itemIndex, isChecked)
@@ -28,21 +29,22 @@ class Markdown extends Component {
         this.props.onCheck(updated)
       }
 
-      map(items, (item, index) => (
+      map(items, (item, index) => {
+        item.disabled = false
         item.onclick = onClick.bind(this, index)
-      ))
+      })
     }
   }
 
   render () {
     const { options } = this.props
     const parser = createParser(options)
-    const html = parser(this.markdown || '')
+    const html = parser.makeHtml(this.markdown || '')
 
     return (
       <div
         className='markdown'
-        dangerouslySetInnerHTML={{ __html: addChecklists(html) }}
+        dangerouslySetInnerHTML={{ __html: html }}
       />
     )
   }
