@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
-import { updatePreferences } from '../actions/currentUser'
-import { getPreference } from '../reducers/currentUser'
+import { updatePreferences } from '../../actions/currentUser'
+import { getPreference } from '../../reducers/currentUser'
 
 export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
   <Layout.Sider

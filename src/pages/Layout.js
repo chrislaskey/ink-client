@@ -4,7 +4,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { isLoggedIn } from '../reducers/currentUser'
 import { Layout as LayoutComponent } from 'antd'
 import FlashMessages from '../components/FlashMessages'
-import Sidebar from './_Sidebar'
+import Sidebar from './Layout/_Sidebar'
 import './Layout.css'
 
 import Home from './Home/Index'
