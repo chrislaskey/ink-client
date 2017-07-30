@@ -5,11 +5,6 @@ import { createParser, updateChecklist } from '../helpers/markdown'
 import './Markdown.css'
 
 class Markdown extends Component {
-  constructor (props) {
-    super(props)
-    this.markdown = props.value
-  }
-
   componentDidMount () {
     this.bindChecklists()
   }
@@ -23,9 +18,8 @@ class Markdown extends Component {
       const items = findDOMNode(this).querySelectorAll('input[type=checkbox]')
       const onClick = (itemIndex, event) => {
         const isChecked = event.target.checked
-        const updated = updateChecklist(this.markdown, itemIndex, isChecked)
+        const updated = updateChecklist(this.props.value, itemIndex, isChecked)
 
-        this.markdown = updated
         this.props.onCheck(updated)
       }
 
@@ -37,9 +31,9 @@ class Markdown extends Component {
   }
 
   render () {
-    const { options } = this.props
+    const { options, value } = this.props
     const parser = createParser(options)
-    const html = parser.makeHtml(this.markdown || '')
+    const html = parser.makeHtml(value || '')
 
     return (
       <div
