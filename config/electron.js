@@ -3,18 +3,6 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 require('./env')
 
-let startUrl
-
-if (process.env.NODE_ENV == 'development') {
-  startUrl = 'http://localhost:3000'
-} else {
-	startUrl = url.format({
-    pathname: path.join(__dirname, '../build/index.html'),
-    protocol: 'file:',
-    slashes: true
-  })
-}
-
 /* Electron Configuration */
 // Based on https://github.com/csepulv/electron-with-create-react-app/blob/master/src/electron-starter.js
 
@@ -34,6 +22,19 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
+
+  /* Customized Code for Create React App integration */
+  let startUrl
+
+  if (process.env.NODE_ENV == 'development') {
+    startUrl = 'http://localhost:3000'
+  } else {
+	  startUrl = url.format({
+      pathname: path.join(__dirname, '../build/index.html'),
+      protocol: 'file:',
+      slashes: true
+    })
+  }
 
   // and load the index.html of the app.
   mainWindow.loadURL(startUrl)
