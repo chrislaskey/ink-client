@@ -5,6 +5,7 @@ import { isLoggedIn } from '../reducers/currentUser'
 import { Layout as LayoutComponent } from 'antd'
 import FlashMessages from '../components/FlashMessages'
 import Sidebar from './Layout/_Sidebar'
+import DraggableBanner from './Layout/_DraggableBanner'
 import './Layout.css'
 
 import Home from './Home/Index'
@@ -19,6 +20,7 @@ export const Layout = ({ loggedIn }) => {
 
   return (
     <LayoutComponent className='ant-layout-has-sider window-height theme-dark'>
+      <DraggableBanner />
       <FlashMessages />
       <Sidebar />
       <Route exact path='/' component={Home} />
