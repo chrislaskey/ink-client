@@ -4,6 +4,7 @@ import { compose, graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import { getPost, updatePost } from '../../api/posts'
 import { getCurrentUserId } from '../../reducers/currentUser'
+import { withVarsFromProps } from '../../helpers/graphql'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
 import { Heading, Section } from '../../components/Section'
@@ -52,13 +53,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
 }
 
 const OnePostWithData = compose(
-  graphql(getPost, {
-    options: (props) => ({
-      variables: {
-        id: props.match.params.id
-      }
-    })
-  }),
+  graphql(getPost, withVarsFromProps({id: 'match.params.id'})),
   graphql(updatePost)
 )(OnePost)
 

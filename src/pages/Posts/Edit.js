@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose, graphql } from 'react-apollo'
 import history from '../../app/history'
+import { withVarsFromProps } from '../../helpers/graphql'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { clearCache } from '../../helpers/cache'
 import { getPost, updatePost } from '../../api/posts'
@@ -37,13 +38,7 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
 }
 
 const EditPostWithData = compose(
-  graphql(getPost, {
-    options: (props) => ({
-      variables: {
-        id: props.match.params.id
-      }
-    })
-  }),
+  graphql(getPost, withVarsFromProps({id: 'match.params.id'})),
   graphql(updatePost)
 )(EditPost)
 
