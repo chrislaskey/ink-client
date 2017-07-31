@@ -53,9 +53,15 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
 
 Sidebar.displayName = 'Sidebar'
 
-const mapStateToProps = (state) => ({
-  sidebarCollapsed: getPreference(state, 'sidebarCollapsed') || false
-})
+const mapStateToProps = (state) => {
+  const sidebarDefault = window.innerWidth <= 1000
+  const sidebarState = getPreference(state, 'sidebarCollapsed')
+  const sidebarSet = sidebarState !== undefined
+
+  return {
+    sidebarCollapsed: sidebarSet ? sidebarState : sidebarDefault
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   toggleSidebar: (sidebar) => dispatch(
