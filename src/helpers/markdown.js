@@ -10,6 +10,20 @@ export const createParser = (passedOptions = {}) => {
   })
 }
 
+export const addCopyCodeBlocks = (value) => {
+  const icon = '<a class="copy-code-to-clipboard" href="#"><i class="anticon anticon-copy"></i></a>'
+
+  return value.replace(/<pre><code/, '<pre>' + icon + '<code')
+}
+
+export const markdownToHtml = (value, options = {}) => {
+  const parser = createParser(options)
+  const html = parser.makeHtml(value)
+  const withExtensions = addCopyCodeBlocks(html)
+
+  return withExtensions
+}
+
 export const updateChecklist = (value, index, isChecked) => {
   let matchIndex = -1
 

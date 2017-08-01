@@ -1,16 +1,19 @@
 import React, {Component} from 'react'
 import { findDOMNode } from 'react-dom'
 import { map } from 'lodash'
-import { createParser, updateChecklist } from '../helpers/markdown'
+import copyToClipboard from '../helpers/copyToClipboard'
+import { markdownToHtml, updateChecklist } from '../helpers/markdown'
 import './Markdown.css'
 
 class Markdown extends Component {
   componentDidMount () {
     this.bindChecklists()
+    this.bindCodeBlocks()
   }
 
   componentDidUpdate () {
     this.bindChecklists()
+    this.bindCodeBlocks()
   }
 
   bindChecklists () {
@@ -30,10 +33,27 @@ class Markdown extends Component {
     }
   }
 
+  bindCodeBlocks () {
+    const items = findDOMNode(this).querySelectorAll('a.copy-code-to-clipboard')
+    const onClick = (item, event) => {
+      const codeTag = item.nextElementSibling
+      const code = codeTag.innerText.replace(/[ ]*$/, '')
+
+      if (event) {
+        event.preventDefault()
+      }
+
+      copyToClipboard(code)
+    }
+
+    map(items, (item) => (
+      item.onclick = onClick.bind(this, item)
+    ))
+  }
+
   render () {
     const { options, value } = this.props
-    const parser = createParser(options)
-    const html = parser.makeHtml(value || '')
+    const html = markdownToHtml(value || '', options || {})
 
     return (
       <div

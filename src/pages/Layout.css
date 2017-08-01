@@ -213,6 +213,22 @@ ul.posts {
     margin-left: 15px;
   }
 
+.post-body pre {
+  position: relative;
+}
+
+  .post-body pre a.copy-code-to-clipboard {
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
+    .post-body pre:hover a.copy-code-to-clipboard {
+      color: #108ee9;
+    }
+
 form.post textarea[name='body'] {
   font-family: Consolas, Menlo, Courier, monospace;
 }
