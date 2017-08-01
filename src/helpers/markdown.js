@@ -13,7 +13,7 @@ export const createParser = (passedOptions = {}) => {
 export const addCopyCodeBlocks = (value) => {
   const icon = '<a class="copy-code-to-clipboard" href="#"><i class="anticon anticon-copy"></i></a>'
 
-  return value.replace(/<pre><code/, '<pre>' + icon + '<code')
+  return value.replace(/<pre><code/g, '<pre>' + icon + '<code')
 }
 
 export const markdownToHtml = (value, options = {}) => {

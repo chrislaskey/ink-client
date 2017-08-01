@@ -1,6 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { findDOMNode } from 'react-dom'
 import { map } from 'lodash'
+import { createFlashMessage } from '../actions/flashMessages'
 import copyToClipboard from '../helpers/copyToClipboard'
 import { markdownToHtml, updateChecklist } from '../helpers/markdown'
 import './Markdown.css'
@@ -34,6 +36,7 @@ class Markdown extends Component {
   }
 
   bindCodeBlocks () {
+    const { flashMessage } = this.props
     const items = findDOMNode(this).querySelectorAll('a.copy-code-to-clipboard')
     const onClick = (item, event) => {
       const codeTag = item.nextElementSibling
@@ -43,7 +46,9 @@ class Markdown extends Component {
         event.preventDefault()
       }
 
-      copyToClipboard(code)
+      if (copyToClipboard(code)) {
+        flashMessage('Copied to clipboard', 'success')
+      }
     }
 
     map(items, (item) => (
@@ -64,4 +69,10 @@ class Markdown extends Component {
   }
 }
 
-export default Markdown
+const mapDispatchToProps = (dispatch) => ({
+  flashMessage: (title, type, description) => (
+    dispatch(createFlashMessage(title, type, description))
+  )
+})
+
+export default connect(undefined, mapDispatchToProps)(Markdown)

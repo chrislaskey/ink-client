@@ -19,7 +19,10 @@ export const copyToClipboard = (value) => {
 
   try {
     document.execCommand('copy')
-  } catch (_err) { }
+    return true
+  } catch (_err) {
+    return false
+  }
 }
 
 export default copyToClipboard
