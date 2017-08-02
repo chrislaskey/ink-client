@@ -3,6 +3,8 @@ import { gql } from 'react-apollo'
 export const postReadAttributes = gql`
   fragment PostReadAttributes on Post {
     id
+    uid
+    secret
   }
 `
 
