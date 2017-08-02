@@ -15,7 +15,7 @@ export const NewPost = ({ flashMessage, mutate }) => {
 
     clearCache()
     flashMessage('Successfully created new post', 'success')
-    history.push('/posts/' + response.data.create_post.id)
+    history.push('/posts/' + response.data.create_post.uid)
   }
 
   return (

@@ -2,7 +2,6 @@ import { gql } from 'react-apollo'
 
 export const postReadAttributes = gql`
   fragment PostReadAttributes on Post {
-    id
     uid
     secret
   }
@@ -33,8 +32,8 @@ export const getPosts = gql`
 `
 
 export const getPost = gql`
-  query Post($id: Int!) {
-    post(id: $id){
+  query Post($uid: Int!) {
+    post(uid: $uid){
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -61,8 +60,8 @@ export const createPost = gql`
 `
 
 export const updatePost = gql`
-  mutation UpdatePost($id: Int!, $title: String!, $body: String!, $userId: Int!) {
-    update_post(id: $id, post: {title: $title, body: $body, userId: $userId}){
+  mutation UpdatePost($uid: Int!, $title: String!, $body: String!, $userId: Int!) {
+    update_post(uid: $uid, post: {title: $title, body: $body, userId: $userId}){
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -75,8 +74,8 @@ export const updatePost = gql`
 `
 
 export const deletePost = gql`
-  mutation DeletePost($id: Int!) {
-    delete_post(id: $id){
+  mutation DeletePost($uid: Int!) {
+    delete_post(uid: $uid){
       ...PostReadAttributes
       ...PostWriteAttributes
       user {

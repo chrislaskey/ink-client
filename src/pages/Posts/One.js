@@ -17,7 +17,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
 
   const onCheck = (updatedBody) => mutate({
     variables: {
-      id: parseInt(post.id, 10),
+      uid: post.uid,
       title: post.title,
       body: updatedBody,
       userId: userId
@@ -30,7 +30,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
       <div className='post-actions'>
         <Button.Group>
           <Link
-            to={'/posts/' + post.id + '/edit'}
+            to={'/posts/' + post.uid + '/edit'}
             className='ant-btn'
           >
             <Icon type='edit' />
@@ -53,7 +53,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
 }
 
 const OnePostWithData = compose(
-  graphql(getPost, withVarsFromProps({id: 'match.params.id'})),
+  graphql(getPost, withVarsFromProps({uid: 'match.params.uid'})),
   graphql(updatePost)
 )(OnePost)
 

@@ -11,7 +11,7 @@ export const DeletePost = ({ flashMessage, mutate, post }) => {
   const onClick = async () => {
     await mutate({
       variables: {
-        id: parseInt(post.id, 10)
+        uid: post.uid
       }
     })
     clearCache()

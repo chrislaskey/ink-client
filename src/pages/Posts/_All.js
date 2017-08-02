@@ -9,8 +9,8 @@ import { Heading, Section } from '../../components/Section'
 export const AllPosts = ({data: {loading, posts}, match}) => {
   const renderPosts = (items) => (
     map(items, (item) => (
-      <li key={item.id}>
-        <Link to={match.url + '/' + item.id}>{item.title}</Link>
+      <li key={item.uid}>
+        <Link to={match.url + '/' + item.uid}>{item.title}</Link>
       </li>
     ))
   )

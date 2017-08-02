@@ -13,8 +13,8 @@ export const Posts = ({ match }) => (
     <Route path={match.url} component={AllPosts} />
     <Switch>
       <Route exact path={match.url + '/new'} component={NewPost} />
-      <Route exact path={match.url + '/:id/edit'} component={EditPost} />
-      <Route exact path={match.url + '/:id'} component={OnePost} />
+      <Route exact path={match.url + '/:uid/edit'} component={EditPost} />
+      <Route exact path={match.url + '/:uid'} component={OnePost} />
       <Route path={match.url} component={UnselectedPost} />
     </Switch>
   </Page>

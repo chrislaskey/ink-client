@@ -10,12 +10,12 @@ import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
 export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
-  const onCancel = () => history.push('/posts/' + post.id)
+  const onCancel = () => history.push('/posts/' + post.uid)
   const onSubmit = async (values) => {
     await mutate({ variables: values })
     clearCache()
     flashMessage('Successfully edited post', 'success')
-    history.push('/posts/' + post.id)
+    history.push('/posts/' + post.uid)
   }
 
   if (loading) {
@@ -23,7 +23,7 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
   }
 
   const initialValues = {
-    id: parseInt(post.id, 10),
+    uid: post.uid,
     title: post.title,
     body: post.body,
     userId: post.user.id
@@ -38,7 +38,7 @@ export const EditPost = ({data: {loading, post}, flashMessage, mutate}) => {
 }
 
 const EditPostWithData = compose(
-  graphql(getPost, withVarsFromProps({id: 'match.params.id'})),
+  graphql(getPost, withVarsFromProps({uid: 'match.params.uid'})),
   graphql(updatePost)
 )(EditPost)
 
