@@ -4,11 +4,13 @@ import { compose, graphql } from 'react-apollo'
 import { getPost, updatePost } from '../../api/posts'
 import { getCurrentUserId } from '../../reducers/currentUser'
 import { withVarsFromProps } from '../../helpers/graphql'
+import ButtonLink from '../../components/ButtonLink'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
-import ButtonLink from '../../components/ButtonLink'
+import Share from './_Share'
+import { url } from '../../helpers/paths'
 import { Heading, Section } from '../../components/Section'
-import { Button, Popover } from 'antd'
+import { Button, Tooltip } from 'antd'
 
 export const OnePost = ({data: {loading, post}, mutate, userId}) => {
   if (loading) {
@@ -29,19 +31,15 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
       <div />
       <div className='post-actions'>
         <Button.Group>
-          <Popover
-            placement='bottom'
-            title='Share'
-            content='Anyone with this link can view the post'
-            trigger='hover'
-          >
+          <Share link={url('/posts/' + post.uid + '/' + post.secret)} />
+          <Tooltip placement='bottomRight' title='Share Preview'>
             <span>
               <ButtonLink
-                icon='link'
+                icon='eye-o'
                 to={'/posts/' + post.uid + '/' + post.secret}
               />
             </span>
-          </Popover>
+          </Tooltip>
         </Button.Group>
         <Button.Group>
           <ButtonLink icon='edit' to={'/posts/' + post.uid + '/edit'}>
