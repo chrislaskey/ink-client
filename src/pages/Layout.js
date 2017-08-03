@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import { isLoggedIn } from '../reducers/currentUser'
 import { Layout as LayoutComponent } from 'antd'
 import FlashMessages from '../components/FlashMessages'
@@ -11,20 +11,30 @@ import './Layout.css'
 import Home from './Home/Index'
 import Login from './Login'
 import Posts from './Posts'
+import Public from './Public'
 import Settings from './Settings'
 
 export const Layout = ({ loggedIn }) => {
   if (!loggedIn) {
-    return <Login />
+    return (
+      <Switch>
+        <Route path='/public' component={Public} />
+        <Route component={Login} />
+      </Switch>
+    )
   }
 
   return (
     <LayoutComponent className='ant-layout-has-sider window-height theme-dark'>
       <DraggableBanner />
       <FlashMessages />
-      <Sidebar />
+      <Switch>
+        <Route path='/public' component={null} />
+        <Route component={Sidebar} />
+      </Switch>
       <Route exact path='/' component={Home} />
       <Route path='/posts' component={Posts} />
+      <Route path='/public' component={Public} />
       <Route path='/settings' component={Settings} />
     </LayoutComponent>
   )

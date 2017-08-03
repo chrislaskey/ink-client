@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { getPublicPost } from '../../api/posts'
 import { withVarsFromProps } from '../../helpers/graphql'
-import Markdown from '../../components/Markdown'
+import Post from '../Posts/_Post'
 import { Heading, Section } from '../../components/Section'
 
 export const PublicPost = ({data: {loading, public_post: post}}) => {
@@ -19,13 +19,12 @@ export const PublicPost = ({data: {loading, public_post: post}}) => {
 
   return (
     <Section padded id='public-post' heading={heading}>
-      <h1>{post.title}</h1>
-      <div className='post-body'>
-        <Markdown value={post.body} />
-      </div>
+      <Post post={post} />
     </Section>
   )
 }
+
+PublicPost.displayName = 'PublicPost'
 
 const PublicPostWithData = compose(
   graphql(getPublicPost, withVarsFromProps({

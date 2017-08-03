@@ -6,9 +6,9 @@ import { getCurrentUserId } from '../../reducers/currentUser'
 import { withVarsFromProps } from '../../helpers/graphql'
 import ButtonLink from '../../components/ButtonLink'
 import DeletePost from './_Delete'
-import Markdown from '../../components/Markdown'
+import Post from './_Post'
 import Share from './_Share'
-import { url } from '../../helpers/paths'
+import { postEditPath, publicPostPath, publicPostUrl } from '../../helpers/paths'
 import { Heading, Section } from '../../components/Section'
 import { Button, Tooltip } from 'antd'
 
@@ -31,18 +31,15 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
       <div />
       <div className='post-actions'>
         <Button.Group>
-          <Share link={url('/posts/' + post.uid + '/' + post.secret)} />
+          <Share link={publicPostUrl(post)} />
           <Tooltip placement='bottomRight' title='Share Preview'>
             <span>
-              <ButtonLink
-                icon='eye-o'
-                to={'/posts/' + post.uid + '/' + post.secret}
-              />
+              <ButtonLink icon='eye-o' to={publicPostPath(post)} />
             </span>
           </Tooltip>
         </Button.Group>
         <Button.Group>
-          <ButtonLink icon='edit' to={'/posts/' + post.uid + '/edit'}>
+          <ButtonLink icon='edit' to={postEditPath(post)}>
             <span> Edit</span>
           </ButtonLink>
           <DeletePost post={post} />
@@ -53,10 +50,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
 
   return (
     <Section padded id='one-post' heading={heading}>
-      <h1>{post.title}</h1>
-      <div className='post-body'>
-        <Markdown onCheck={onCheck} value={post.body} />
-      </div>
+      <Post post={post} onCheck={onCheck} />
     </Section>
   )
 }
