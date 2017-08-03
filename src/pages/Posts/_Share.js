@@ -16,7 +16,7 @@ const Share = ({ flashMessage, link }) => {
   }
 
   return (
-    <Tooltip placement='bottomRight' title='Share'>
+    <Tooltip placement='bottom' title='Public Link'>
       <Button icon='link' onClick={onClick} />
     </Tooltip>
   )

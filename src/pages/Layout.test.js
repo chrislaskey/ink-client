@@ -27,8 +27,8 @@ describe('Layout Component', () => {
       })
     })
 
-    it('renders a Login component', () => {
-      expect(subject.find('Login').exists()).toBe(true)
+    it('renders routes', () => {
+      expect(subject.find('Route').length).toBe(2)
     })
   })
 
@@ -49,12 +49,8 @@ describe('Layout Component', () => {
       expect(subject.find('Connect(FlashMessages)').exists()).toBe(true)
     })
 
-    it('renders sidebar', () => {
-      expect(subject.find('Connect(Sidebar)').exists()).toBe(true)
-    })
-
     it('renders routes', () => {
-      expect(subject.find('Route').length).toBe(3)
+      expect(subject.find('Route').length).toBe(6)
     })
   })
 })

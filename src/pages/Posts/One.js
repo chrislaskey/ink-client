@@ -28,16 +28,15 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
 
   const heading = (
     <Heading>
-      <div />
       <div className='post-actions'>
         <Button.Group>
           <Share link={publicPostUrl(post)} />
-          <Tooltip placement='bottomRight' title='Share Preview'>
-            <span>
-              <ButtonLink icon='eye-o' to={publicPostPath(post)} />
-            </span>
+          <Tooltip placement='bottom' title='Share Preview'>
+            <ButtonLink icon='eye-o' to={publicPostPath(post)} />
           </Tooltip>
         </Button.Group>
+      </div>
+      <div className='post-actions'>
         <Button.Group>
           <ButtonLink icon='edit' to={postEditPath(post)}>
             <span> Edit</span>
