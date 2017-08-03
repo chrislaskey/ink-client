@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, graphql } from 'react-apollo'
-import { Link } from 'react-router-dom'
 import { getPost, updatePost } from '../../api/posts'
 import { getCurrentUserId } from '../../reducers/currentUser'
 import { withVarsFromProps } from '../../helpers/graphql'
 import DeletePost from './_Delete'
 import Markdown from '../../components/Markdown'
+import ButtonLink from '../../components/ButtonLink'
 import { Heading, Section } from '../../components/Section'
-import { Button, Icon } from 'antd'
+import { Button, Popover } from 'antd'
 
 export const OnePost = ({data: {loading, post}, mutate, userId}) => {
   if (loading) {
@@ -29,13 +29,24 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
       <div />
       <div className='post-actions'>
         <Button.Group>
-          <Link
-            to={'/posts/' + post.uid + '/edit'}
-            className='ant-btn'
+          <Popover
+            placement='bottom'
+            title='Share'
+            content='Anyone with this link can view the post'
+            trigger='hover'
           >
-            <Icon type='edit' />
+            <span>
+              <ButtonLink
+                icon='link'
+                to={'/posts/' + post.uid + '/' + post.secret}
+              />
+            </span>
+          </Popover>
+        </Button.Group>
+        <Button.Group>
+          <ButtonLink icon='edit' to={'/posts/' + post.uid + '/edit'}>
             <span> Edit</span>
-          </Link>
+          </ButtonLink>
           <DeletePost post={post} />
         </Button.Group>
       </div>

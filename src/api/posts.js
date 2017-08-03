@@ -45,6 +45,20 @@ export const getPost = gql`
   ${postWriteAttributes}
 `
 
+export const getPublicPost = gql`
+  query Post($uid: Int!, $secret: String!) {
+    public_post(uid: $uid, secret: $secret){
+      ...PostReadAttributes
+      ...PostWriteAttributes
+      user {
+        name
+      }
+    }
+  }
+  ${postReadAttributes}
+  ${postWriteAttributes}
+`
+
 export const createPost = gql`
   mutation CreatePost($title: String!, $body: String!, $userId: Int!) {
     create_post(title: $title, body: $body, userId: $userId){
