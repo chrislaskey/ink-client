@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
-import { map } from 'lodash'
+import { includes, map } from 'lodash'
 import { createFlashMessage } from '../../actions/flashMessages'
+import { getLabels } from '../../api/labels'
 import { createPostLabel, deletePostLabel } from '../../api/posts'
-import { Button, Popover } from 'antd'
+import { clearCache } from '../../helpers/cache'
+import { Button, Icon, Popover } from 'antd'
 
 class PostLabel extends Component {
   constructor (props) {
@@ -15,24 +17,42 @@ class PostLabel extends Component {
   }
 
   render () {
-    const { flashMessage } = this.props
-    const updateVisibility = (value) => {
-      this.setState({ visible: value })
-    }
+    const {
+      data: { labels, loading },
+      flashMessage,
+      onCreate,
+      onDelete,
+      post
+    } = this.props
 
-    const onClick = (event, label) => {
+    const postLabelIds = map(post.labels, 'id')
+    const updateVisibility = (value) => this.setState({ visible: value })
+
+    const onClick = async (event, label) => {
       if (event) {
         event.preventDefault()
       }
 
-      flashMessage('Successfully added label ' + label.name, 'success')
+      const connected = includes(postLabelIds, label.id)
+      const variables = {
+        label_id: parseInt(label.id, 10),
+        uid: post.uid
+      }
+
+      let message
+
+      if (connected) {
+        message = 'Removed label ' + label.name
+        await onDelete({ variables: variables })
+      } else {
+        message = 'Added label ' + label.name
+        await onCreate({ variables: variables })
+      }
+
+      clearCache()
+      flashMessage(message, 'success')
       updateVisibility(false)
     }
-
-    const labels = [
-      {id: 1, name: 'one'},
-      {id: 2, name: 'two'}
-    ]
 
     const renderLabel = (label) => (
       <li key={label.id}>
@@ -42,7 +62,7 @@ class PostLabel extends Component {
       </li>
     )
 
-    const content = (
+    const content = loading ? <Icon type='loading' /> : (
       <ul>
         {map(labels, renderLabel)}
       </ul>
@@ -64,6 +84,7 @@ class PostLabel extends Component {
 }
 
 const PostLabelWithData = compose(
+  graphql(getLabels),
   graphql(createPostLabel, { name: 'onCreate' }),
   graphql(deletePostLabel, { name: 'onDelete' })
 )(PostLabel)
