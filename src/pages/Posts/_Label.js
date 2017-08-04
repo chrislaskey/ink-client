@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
-import { connect } from 'react-redux'
 import { includes, map } from 'lodash'
-import { createFlashMessage } from '../../actions/flashMessages'
 import { getLabels } from '../../api/labels'
 import { createPostLabel, deletePostLabel } from '../../api/posts'
 import { clearCache } from '../../helpers/cache'
-import { Button, Icon, Popover } from 'antd'
+import { notification } from '../../helpers/notification'
+import { Button, Popover } from 'antd'
 
 class PostLabel extends Component {
   constructor (props) {
@@ -18,8 +17,7 @@ class PostLabel extends Component {
 
   render () {
     const {
-      data: { labels, loading },
-      flashMessage,
+      data: { labels },
       onCreate,
       onDelete,
       post
@@ -50,7 +48,7 @@ class PostLabel extends Component {
       }
 
       clearCache()
-      flashMessage(message, 'success')
+      notification(message, 'success')
       updateVisibility(false)
     }
 
@@ -62,7 +60,7 @@ class PostLabel extends Component {
       </li>
     )
 
-    const content = loading ? <Icon type='loading' /> : (
+    const content = (
       <ul>
         {map(labels, renderLabel)}
       </ul>
@@ -89,10 +87,4 @@ const PostLabelWithData = compose(
   graphql(deletePostLabel, { name: 'onDelete' })
 )(PostLabel)
 
-const mapDispatchToProps = (dispatch) => ({
-  flashMessage: (title, type, description) => (
-    dispatch(createFlashMessage(title, type, description))
-  )
-})
-
-export default connect(undefined, mapDispatchToProps)(PostLabelWithData)
+export default PostLabelWithData
