@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { compose, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 import { map } from 'lodash'
 import { createFlashMessage } from '../../actions/flashMessages'
+import { createPostLabel, deletePostLabel } from '../../api/posts'
 import { Button, Popover } from 'antd'
 
 class PostLabel extends Component {
@@ -17,6 +19,7 @@ class PostLabel extends Component {
     const updateVisibility = (value) => {
       this.setState({ visible: value })
     }
+
     const onClick = (event, label) => {
       if (event) {
         event.preventDefault()
@@ -60,10 +63,15 @@ class PostLabel extends Component {
   }
 }
 
+const PostLabelWithData = compose(
+  graphql(createPostLabel, { name: 'onCreate' }),
+  graphql(deletePostLabel, { name: 'onDelete' })
+)(PostLabel)
+
 const mapDispatchToProps = (dispatch) => ({
   flashMessage: (title, type, description) => (
     dispatch(createFlashMessage(title, type, description))
   )
 })
 
-export default connect(undefined, mapDispatchToProps)(PostLabel)
+export default connect(undefined, mapDispatchToProps)(PostLabelWithData)

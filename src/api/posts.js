@@ -19,7 +19,7 @@ export const postWriteAttributes = gql`
 
 export const getPosts = gql`
   query Posts {
-    posts{
+    posts {
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -33,7 +33,7 @@ export const getPosts = gql`
 
 export const getPost = gql`
   query Post($uid: Int!) {
-    post(uid: $uid){
+    post(uid: $uid) {
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -47,7 +47,7 @@ export const getPost = gql`
 
 export const getPublicPost = gql`
   query Post($uid: Int!, $secret: String!) {
-    public_post(uid: $uid, secret: $secret){
+    public_post(uid: $uid, secret: $secret) {
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -61,7 +61,7 @@ export const getPublicPost = gql`
 
 export const createPost = gql`
   mutation CreatePost($title: String!, $body: String!, $userId: Int!) {
-    create_post(title: $title, body: $body, userId: $userId){
+    create_post(title: $title, body: $body, userId: $userId) {
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -75,7 +75,7 @@ export const createPost = gql`
 
 export const updatePost = gql`
   mutation UpdatePost($uid: Int!, $title: String!, $body: String!, $userId: Int!) {
-    update_post(uid: $uid, post: {title: $title, body: $body, userId: $userId}){
+    update_post(uid: $uid, post: {title: $title, body: $body, userId: $userId}) {
       ...PostReadAttributes
       ...PostWriteAttributes
       user {
@@ -89,7 +89,35 @@ export const updatePost = gql`
 
 export const deletePost = gql`
   mutation DeletePost($uid: Int!) {
-    delete_post(uid: $uid){
+    delete_post(uid: $uid) {
+      ...PostReadAttributes
+      ...PostWriteAttributes
+      user {
+        name
+      }
+    }
+  }
+  ${postReadAttributes}
+  ${postWriteAttributes}
+`
+
+export const createPostLabel = gql`
+  mutation createPostLabel($uid: Int!, $label_id: Int!) {
+    create_post_label(uid: $uid, label_id: $label_id) {
+      ...PostReadAttributes
+      ...PostWriteAttributes
+      user {
+        name
+      }
+    }
+  }
+  ${postReadAttributes}
+  ${postWriteAttributes}
+`
+
+export const deletePostLabel = gql`
+  mutation deletePostLabel($uid: Int!, $label_id: Int!) {
+    delete_post_label(uid: $uid, label_id: $label_id) {
       ...PostReadAttributes
       ...PostWriteAttributes
       user {

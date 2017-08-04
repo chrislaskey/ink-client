@@ -1,5 +1,7 @@
 import { get, mapValues } from 'lodash'
 
+// # Function: withVarsFromProps
+//
 // The `graphql` method takes an optional second argument. This can be used
 // to send additional information like variables needed in the query.
 //
@@ -25,4 +27,30 @@ export const withVarsFromProps = (vars = {}) => ({
   options: (props) => ({
     variables: mapValues(vars, (value) => get(props, value))
   })
+})
+
+// # Function: refetch
+//
+// The `graphql` method takes an optional second argument. This can be used
+// to send additional information like variables needed in the query.
+//
+// Instead of explicitly writing:
+//
+//   graphql(someQuery, {
+//     options: {
+//       refetchQueries: [
+//         'Posts',
+//         'Comments'
+//       ]
+//     })
+//   })
+//
+// The `withVarsFromProps` method DRYs up this common object into a method:
+//
+//   graphql(someQuery, refetch(['Posts', 'Comments']))
+//
+export const refetch = (queries = []) => ({
+  options: {
+    refetchQueries: queries
+  }
 })
