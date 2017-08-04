@@ -6,6 +6,7 @@ import { getCurrentUserId } from '../../reducers/currentUser'
 import { withVarsFromProps } from '../../helpers/graphql'
 import ButtonLink from '../../components/ButtonLink'
 import DeletePost from './_Delete'
+import Label from './_Label'
 import Post from './_Post'
 import Share from './_Share'
 import { postEditPath, publicPostPath, publicPostUrl } from '../../helpers/paths'
@@ -34,6 +35,7 @@ export const OnePost = ({data: {loading, post}, mutate, userId}) => {
           <Tooltip placement='bottom' title='Share Preview'>
             <ButtonLink icon='eye-o' to={publicPostPath(post)} />
           </Tooltip>
+          <Label post={post} />
         </Button.Group>
       </div>
       <div className='post-actions'>
