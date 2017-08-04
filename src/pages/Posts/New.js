@@ -1,20 +1,19 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
 import history from '../../app/history'
-import { createFlashMessage } from '../../actions/flashMessages'
 import { createPost } from '../../api/posts'
 import { clearCache } from '../../helpers/cache'
+import { notification } from '../../helpers/notification'
 import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
-export const NewPost = ({ flashMessage, mutate }) => {
+export const NewPost = ({ mutate }) => {
   const onCancel = () => history.push('/posts')
   const onSubmit = async (values) => {
     const response = await mutate({ variables: values })
 
     clearCache()
-    flashMessage('Successfully created new post', 'success')
+    notification('Successfully created new post', 'success')
     history.push('/posts/' + response.data.create_post.uid)
   }
 
@@ -26,12 +25,4 @@ export const NewPost = ({ flashMessage, mutate }) => {
   )
 }
 
-const NewPostWithData = graphql(createPost)(NewPost)
-
-const mapDispatchToProps = (dispatch) => ({
-  flashMessage: (title, type, description) => (
-    dispatch(createFlashMessage(title, type, description))
-  )
-})
-
-export default connect(undefined, mapDispatchToProps)(NewPostWithData)
+export default graphql(createPost)(NewPost)
