@@ -8,6 +8,10 @@ hr {
   border-bottom: 0px;
 }
 
+.ant-btn {
+  border-radius: 0px !important;
+}
+
 /* Structural Styles */
 
 .window-height {
