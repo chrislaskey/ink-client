@@ -10,10 +10,18 @@ export const labelWriteAttributes = gql`
   fragment LabelWriteAttributes on Label {
     name
     color
-    user {
-      id
+  }
+`
+
+export const getLabels = gql`
+  query Labels {
+    labels {
+      ...LabelReadAttributes
+      ...LabelWriteAttributes
     }
   }
+  ${labelReadAttributes}
+  ${labelWriteAttributes}
 `
 
 export const createLabel = gql`

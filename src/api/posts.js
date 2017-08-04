@@ -11,9 +11,6 @@ export const postWriteAttributes = gql`
   fragment PostWriteAttributes on Post {
     title
     body
-    user {
-      id
-    }
   }
 `
 
@@ -36,6 +33,11 @@ export const getPost = gql`
     post(uid: $uid) {
       ...PostReadAttributes
       ...PostWriteAttributes
+      labels {
+        id
+        color
+        name
+      }
       user {
         name
       }
