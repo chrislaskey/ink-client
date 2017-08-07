@@ -4,6 +4,8 @@ export const noteReadAttributes = gql`
   fragment NoteReadAttributes on Note {
     uid
     secret
+    insertedAt
+    updatedAt
   }
 `
 

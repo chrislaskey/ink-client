@@ -1,6 +1,7 @@
 import React from 'react'
 import { isEmpty, map } from 'lodash'
 import Markdown from '../../components/Markdown'
+import RelativeTime from '../../components/RelativeTime'
 
 export const Note = ({ onCheck, note }) => (
   <div className='note'>
@@ -14,6 +15,10 @@ export const Note = ({ onCheck, note }) => (
           ))}
         </p>
       }
+      <p>
+        Created at: <RelativeTime time={note.insertedAt} /> |
+        Last updated: <RelativeTime time={note.updatedAt} />
+      </p>
     </div>
     <div className='note-body'>
       <Markdown onCheck={onCheck} value={note.body} />
