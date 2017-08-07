@@ -2,22 +2,22 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Page from '../../components/Page'
 
-import AllPosts from './_All'
-import EditPost from './Edit'
-import NewPost from './New'
-import OnePost from './One'
-import UnselectedPost from './_Unselected'
+import AllNotes from './_All'
+import EditNote from './Edit'
+import NewNote from './New'
+import OneNote from './One'
+import UnselectedNote from './_Unselected'
 
-export const Posts = ({ match }) => (
+export const Notes = ({ match }) => (
   <Page>
-    <Route component={AllPosts} />
+    <Route component={AllNotes} />
     <Switch>
-      <Route exact path={match.url + '/new'} component={NewPost} />
-      <Route exact path={match.url + '/:uid/edit'} component={EditPost} />
-      <Route exact path={match.url + '/:uid'} component={OnePost} />
-      <Route component={UnselectedPost} />
+      <Route exact path={match.url + '/new'} component={NewNote} />
+      <Route exact path={match.url + '/:uid/edit'} component={EditNote} />
+      <Route exact path={match.url + '/:uid'} component={OneNote} />
+      <Route component={UnselectedNote} />
     </Switch>
   </Page>
 )
 
-export default Posts
+export default Notes

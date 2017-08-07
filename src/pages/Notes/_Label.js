@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 import { includes, map } from 'lodash'
 import { getLabels } from '../../api/labels'
-import { createPostLabel, deletePostLabel } from '../../api/posts'
+import { createNoteLabel, deleteNoteLabel } from '../../api/posts'
 import { clearCache } from '../../helpers/cache'
 import { notification } from '../../helpers/notification'
 import { Button, Popover } from 'antd'
 
-class PostLabel extends Component {
+class NoteLabel extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -81,10 +81,10 @@ class PostLabel extends Component {
   }
 }
 
-const PostLabelWithData = compose(
+const NoteLabelWithData = compose(
   graphql(getLabels),
-  graphql(createPostLabel, { name: 'onCreate' }),
-  graphql(deletePostLabel, { name: 'onDelete' })
-)(PostLabel)
+  graphql(createNoteLabel, { name: 'onCreate' }),
+  graphql(deleteNoteLabel, { name: 'onDelete' })
+)(NoteLabel)
 
-export default PostLabelWithData
+export default NoteLabelWithData

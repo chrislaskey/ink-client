@@ -4,11 +4,11 @@ import history from '../../app/history'
 import { withVarsFromProps } from '../../helpers/graphql'
 import { notification } from '../../helpers/notification'
 import { clearCache } from '../../helpers/cache'
-import { getPost, updatePost } from '../../api/posts'
+import { getNote, updateNote } from '../../api/posts'
 import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
-export const EditPost = ({data: {loading, post}, mutate}) => {
+export const EditNote = ({data: {loading, post}, mutate}) => {
   const onCancel = () => history.push('/posts/' + post.uid)
   const onSubmit = async (values) => {
     await mutate({ variables: values })
@@ -30,13 +30,13 @@ export const EditPost = ({data: {loading, post}, mutate}) => {
 
   return (
     <Section padded id='edit-post' heading={<Heading />}>
-      <h1>Update Post</h1>
+      <h1>Update Note</h1>
       <Form initialValues={initialValues} onCancel={onCancel} onSubmit={onSubmit} />
     </Section>
   )
 }
 
 export default compose(
-  graphql(getPost, withVarsFromProps({uid: 'match.params.uid'})),
-  graphql(updatePost)
-)(EditPost)
+  graphql(getNote, withVarsFromProps({uid: 'match.params.uid'})),
+  graphql(updateNote)
+)(EditNote)

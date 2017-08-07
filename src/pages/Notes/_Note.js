@@ -2,7 +2,7 @@ import React from 'react'
 import { isEmpty, map } from 'lodash'
 import Markdown from '../../components/Markdown'
 
-export const Post = ({ onCheck, post }) => (
+export const Note = ({ onCheck, post }) => (
   <div className='post'>
     <div className='post-header'>
       <h1>{post.title}</h1>
@@ -21,6 +21,6 @@ export const Post = ({ onCheck, post }) => (
   </div>
 )
 
-Post.displayName = 'Post'
+Note.displayName = 'Note'
 
-export default Post
+export default Note

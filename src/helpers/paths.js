@@ -9,12 +9,12 @@ export const postEditPath = (post) => (
   '/posts/' + post.uid + '/edit'
 )
 
-export const publicPostPath = (post) => (
+export const publicNotePath = (post) => (
   '/public/' + post.uid + '/' + post.secret
 )
 
-export const publicPostUrl = (post) => (
-  url(publicPostPath(post))
+export const publicNoteUrl = (post) => (
+  url(publicNotePath(post))
 )
 
 export default url

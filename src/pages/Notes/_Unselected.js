@@ -1,7 +1,7 @@
 import React from 'react'
 import { Heading, Section } from '../../components/Section'
 
-export const UnselectedPost = () => {
+export const UnselectedNote = () => {
   const heading = (
     <Heading>
       <div className='post-actions' />
@@ -12,11 +12,11 @@ export const UnselectedPost = () => {
     <Section id='unselected-post' heading={heading}>
       <div className='full-height center-children'>
         <span className='unselected-post-message'>
-          Select A Post To Read
+          Select A Note To Read
         </span>
       </div>
     </Section>
   )
 }
 
-export default UnselectedPost
+export default UnselectedNote

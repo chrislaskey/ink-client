@@ -19,7 +19,7 @@ const PasswordInput = (props) => (
   />
 )
 
-export const PostsForm = ({handleSubmit, pristine, submitting}) => (
+export const NotesForm = ({handleSubmit, pristine, submitting}) => (
   <Form onSubmit={handleSubmit}>
     <Form.Item>
       <label htmlFor='email'>Email</label>
@@ -42,6 +42,6 @@ export const PostsForm = ({handleSubmit, pristine, submitting}) => (
 
 const ReduxForm = reduxForm({
   form: 'loginForm'
-})(PostsForm)
+})(NotesForm)
 
 export default ReduxForm

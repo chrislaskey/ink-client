@@ -39,7 +39,7 @@ export const withVarsFromProps = (vars = {}) => ({
 //   graphql(someQuery, {
 //     options: {
 //       refetchQueries: [
-//         'Posts',
+//         'Notes',
 //         'Comments'
 //       ]
 //     })
@@ -47,7 +47,7 @@ export const withVarsFromProps = (vars = {}) => ({
 //
 // The `withVarsFromProps` method DRYs up this common object into a method:
 //
-//   graphql(someQuery, refetch(['Posts', 'Comments']))
+//   graphql(someQuery, refetch(['Notes', 'Comments']))
 //
 export const refetch = (queries = []) => ({
   options: {

@@ -10,7 +10,7 @@ import './Layout.css'
 
 import Home from './Home/Index'
 import Login from './Login'
-import Posts from './Posts'
+import Notes from './Notes'
 import Public from './Public'
 import Settings from './Settings'
 
@@ -33,7 +33,7 @@ export const Layout = ({ loggedIn }) => {
         <Route component={Sidebar} />
       </Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/posts' component={Posts} />
+      <Route path='/posts' component={Notes} />
       <Route path='/public' component={Public} />
       <Route path='/settings' component={Settings} />
     </LayoutComponent>

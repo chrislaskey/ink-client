@@ -3,10 +3,10 @@ import { graphql } from 'react-apollo'
 import history from '../../app/history'
 import { clearCache } from '../../helpers/cache'
 import { notification } from '../../helpers/notification'
-import { deletePost } from '../../api/posts'
+import { deleteNote } from '../../api/posts'
 import { Button, Popconfirm, Tooltip } from 'antd'
 
-export const DeletePost = ({ mutate, post }) => {
+export const DeleteNote = ({ mutate, post }) => {
   const onClick = async () => {
     await mutate({
       variables: {
@@ -19,7 +19,7 @@ export const DeletePost = ({ mutate, post }) => {
   }
 
   return (
-    <Tooltip placement='bottomRight' title='Delete Post'>
+    <Tooltip placement='bottomRight' title='Delete Note'>
       <Popconfirm
         title='Confirm Deletion?'
         onConfirm={onClick}
@@ -33,4 +33,4 @@ export const DeletePost = ({ mutate, post }) => {
   )
 }
 
-export default graphql(deletePost)(DeletePost)
+export default graphql(deleteNote)(DeleteNote)

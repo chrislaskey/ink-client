@@ -1,24 +1,24 @@
 import { gql } from 'react-apollo'
 
 export const postReadAttributes = gql`
-  fragment PostReadAttributes on Post {
+  fragment NoteReadAttributes on Note {
     uid
     secret
   }
 `
 
 export const postWriteAttributes = gql`
-  fragment PostWriteAttributes on Post {
+  fragment NoteWriteAttributes on Note {
     title
     body
   }
 `
 
-export const getPosts = gql`
-  query Posts {
+export const getNotes = gql`
+  query Notes {
     posts {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }
@@ -28,11 +28,11 @@ export const getPosts = gql`
   ${postWriteAttributes}
 `
 
-export const getPost = gql`
-  query Post($uid: Int!) {
+export const getNote = gql`
+  query Note($uid: Int!) {
     post(uid: $uid) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       labels {
         id
         color
@@ -47,11 +47,11 @@ export const getPost = gql`
   ${postWriteAttributes}
 `
 
-export const getPublicPost = gql`
-  query Post($uid: Int!, $secret: String!) {
+export const getPublicNote = gql`
+  query Note($uid: Int!, $secret: String!) {
     public_post(uid: $uid, secret: $secret) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }
@@ -61,11 +61,11 @@ export const getPublicPost = gql`
   ${postWriteAttributes}
 `
 
-export const createPost = gql`
-  mutation CreatePost($title: String!, $body: String!, $userId: Int!) {
+export const createNote = gql`
+  mutation CreateNote($title: String!, $body: String!, $userId: Int!) {
     create_post(title: $title, body: $body, userId: $userId) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }
@@ -75,11 +75,11 @@ export const createPost = gql`
   ${postWriteAttributes}
 `
 
-export const updatePost = gql`
-  mutation UpdatePost($uid: Int!, $title: String!, $body: String!, $userId: Int!) {
+export const updateNote = gql`
+  mutation UpdateNote($uid: Int!, $title: String!, $body: String!, $userId: Int!) {
     update_post(uid: $uid, post: {title: $title, body: $body, userId: $userId}) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }
@@ -89,11 +89,11 @@ export const updatePost = gql`
   ${postWriteAttributes}
 `
 
-export const deletePost = gql`
-  mutation DeletePost($uid: Int!) {
+export const deleteNote = gql`
+  mutation DeleteNote($uid: Int!) {
     delete_post(uid: $uid) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }
@@ -103,11 +103,11 @@ export const deletePost = gql`
   ${postWriteAttributes}
 `
 
-export const createPostLabel = gql`
-  mutation createPostLabel($uid: Int!, $label_id: Int!) {
+export const createNoteLabel = gql`
+  mutation createNoteLabel($uid: Int!, $label_id: Int!) {
     create_post_label(uid: $uid, label_id: $label_id) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }
@@ -117,11 +117,11 @@ export const createPostLabel = gql`
   ${postWriteAttributes}
 `
 
-export const deletePostLabel = gql`
-  mutation deletePostLabel($uid: Int!, $label_id: Int!) {
+export const deleteNoteLabel = gql`
+  mutation deleteNoteLabel($uid: Int!, $label_id: Int!) {
     delete_post_label(uid: $uid, label_id: $label_id) {
-      ...PostReadAttributes
-      ...PostWriteAttributes
+      ...NoteReadAttributes
+      ...NoteWriteAttributes
       user {
         name
       }

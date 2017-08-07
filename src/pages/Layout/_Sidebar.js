@@ -34,7 +34,7 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
           <Link to='/posts'>
             <Icon type='mail' />
             <span className='nav-text'>
-              Posts
+              Notes
             </span>
           </Link>
         </Menu.Item>
