@@ -1,11 +1,11 @@
 import React from 'react'
 import { compose, graphql } from 'react-apollo'
-import { getPublicNote } from '../../api/posts'
+import { getPublicNote } from '../../api/notes'
 import { withVarsFromProps } from '../../helpers/graphql'
 import Note from '../Notes/_Note'
 import { Heading, Section } from '../../components/Section'
 
-export const PublicNote = ({data: {loading, public_post: post}}) => {
+export const PublicNote = ({data: {loading, public_note: note}}) => {
   if (loading) {
     return <Section heading={<Heading />} />
   }
@@ -13,13 +13,13 @@ export const PublicNote = ({data: {loading, public_post: post}}) => {
   const heading = (
     <Heading>
       <div />
-      <div className='post-actions' />
+      <div className='note-actions' />
     </Heading>
   )
 
   return (
-    <Section padded id='public-post' heading={heading}>
-      <Note post={post} />
+    <Section padded id='public-note' heading={heading}>
+      <Note note={note} />
     </Section>
   )
 }

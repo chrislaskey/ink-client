@@ -33,7 +33,7 @@ export const Layout = ({ loggedIn }) => {
         <Route component={Sidebar} />
       </Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/posts' component={Notes} />
+      <Route path='/notes' component={Notes} />
       <Route path='/public' component={Public} />
       <Route path='/settings' component={Settings} />
     </LayoutComponent>

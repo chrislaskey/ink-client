@@ -2,11 +2,11 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import { map } from 'lodash'
 import { Link } from 'react-router-dom'
-import { getNotes } from '../../api/posts'
+import { getNotes } from '../../api/notes'
 import { Icon, Tooltip } from 'antd'
 import { Heading, Section } from '../../components/Section'
 
-export const AllNotes = ({data: {loading, posts}, match}) => {
+export const AllNotes = ({data: {loading, notes}, match}) => {
   const renderNotes = (items) => (
     map(items, (item) => (
       <li key={item.uid}>
@@ -19,7 +19,7 @@ export const AllNotes = ({data: {loading, posts}, match}) => {
     <Heading>
       <h3>Notes</h3>
       <Tooltip placement='bottom' title='Create New Note'>
-        <Link className='ant-btn ant-btn-icon-only' to='/posts/new'>
+        <Link className='ant-btn ant-btn-icon-only' to='/notes/new'>
           <Icon type='edit' style={{ fontSize: '16px' }} />
         </Link>
       </Tooltip>
@@ -27,9 +27,9 @@ export const AllNotes = ({data: {loading, posts}, match}) => {
   )
 
   return (
-    <Section id='all-posts' heading={heading} width='340px'>
-      <ul className='posts'>
-        {renderNotes(posts)}
+    <Section id='all-notes' heading={heading} width='340px'>
+      <ul className='notes'>
+        {renderNotes(notes)}
       </ul>
     </Section>
   )

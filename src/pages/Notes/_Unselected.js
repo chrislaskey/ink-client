@@ -4,14 +4,14 @@ import { Heading, Section } from '../../components/Section'
 export const UnselectedNote = () => {
   const heading = (
     <Heading>
-      <div className='post-actions' />
+      <div className='note-actions' />
     </Heading>
   )
 
   return (
-    <Section id='unselected-post' heading={heading}>
+    <Section id='unselected-note' heading={heading}>
       <div className='full-height center-children'>
-        <span className='unselected-post-message'>
+        <span className='unselected-note-message'>
           Select A Note To Read
         </span>
       </div>

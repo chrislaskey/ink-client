@@ -22,7 +22,7 @@ const BodyTextarea = (props) => (
 )
 
 export const NotesForm = ({handleSubmit, pristine, onCancel, submitting}) => (
-  <Form className='post' onSubmit={handleSubmit}>
+  <Form className='note' onSubmit={handleSubmit}>
     <Form.Item>
       <label htmlFor='title'>Title</label>
       <Field name='title' component={TitleInput} />
@@ -54,7 +54,7 @@ export const NotesForm = ({handleSubmit, pristine, onCancel, submitting}) => (
 )
 
 const ReduxForm = reduxForm({
-  form: 'postsForm'
+  form: 'notesForm'
 })(NotesForm)
 
 const mapStateToProps = (state, props) => ({

@@ -10,7 +10,7 @@ import Redirect from '../../components/Redirect'
 import LoginForm from './_LoginForm'
 
 export const Login = ({ location, loggedIn, mutate, onLogin }) => {
-  const landingPage = location.pathname !== '/' ? location.pathname : '/posts'
+  const landingPage = location.pathname !== '/' ? location.pathname : '/notes'
 
   if (loggedIn) {
     return <Redirect to={landingPage} />

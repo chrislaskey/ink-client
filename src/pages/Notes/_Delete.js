@@ -3,19 +3,19 @@ import { graphql } from 'react-apollo'
 import history from '../../app/history'
 import { clearCache } from '../../helpers/cache'
 import { notification } from '../../helpers/notification'
-import { deleteNote } from '../../api/posts'
+import { deleteNote } from '../../api/notes'
 import { Button, Popconfirm, Tooltip } from 'antd'
 
-export const DeleteNote = ({ mutate, post }) => {
+export const DeleteNote = ({ mutate, note }) => {
   const onClick = async () => {
     await mutate({
       variables: {
-        uid: post.uid
+        uid: note.uid
       }
     })
     clearCache()
-    notification('Successfully deleted post', 'warning')
-    history.push('/posts')
+    notification('Successfully deleted note', 'warning')
+    history.push('/notes')
   }
 
   return (

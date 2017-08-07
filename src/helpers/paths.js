@@ -5,16 +5,16 @@ export const url = (path = '/') => (
   join(parser(window.location).origin, path)
 )
 
-export const postEditPath = (post) => (
-  '/posts/' + post.uid + '/edit'
+export const noteEditPath = (note) => (
+  '/notes/' + note.uid + '/edit'
 )
 
-export const publicNotePath = (post) => (
-  '/public/' + post.uid + '/' + post.secret
+export const publicNotePath = (note) => (
+  '/public/' + note.uid + '/' + note.secret
 )
 
-export const publicNoteUrl = (post) => (
-  url(publicNotePath(post))
+export const publicNoteUrl = (note) => (
+  url(publicNotePath(note))
 )
 
 export default url

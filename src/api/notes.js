@@ -1,13 +1,13 @@
 import { gql } from 'react-apollo'
 
-export const postReadAttributes = gql`
+export const noteReadAttributes = gql`
   fragment NoteReadAttributes on Note {
     uid
     secret
   }
 `
 
-export const postWriteAttributes = gql`
+export const noteWriteAttributes = gql`
   fragment NoteWriteAttributes on Note {
     title
     body
@@ -16,7 +16,7 @@ export const postWriteAttributes = gql`
 
 export const getNotes = gql`
   query Notes {
-    posts {
+    notes {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -24,13 +24,13 @@ export const getNotes = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const getNote = gql`
   query Note($uid: Int!) {
-    post(uid: $uid) {
+    note(uid: $uid) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       labels {
@@ -43,13 +43,13 @@ export const getNote = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const getPublicNote = gql`
   query Note($uid: Int!, $secret: String!) {
-    public_post(uid: $uid, secret: $secret) {
+    public_note(uid: $uid, secret: $secret) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -57,13 +57,13 @@ export const getPublicNote = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const createNote = gql`
   mutation CreateNote($title: String!, $body: String!, $userId: Int!) {
-    create_post(title: $title, body: $body, userId: $userId) {
+    create_note(title: $title, body: $body, userId: $userId) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -71,13 +71,13 @@ export const createNote = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const updateNote = gql`
   mutation UpdateNote($uid: Int!, $title: String!, $body: String!, $userId: Int!) {
-    update_post(uid: $uid, post: {title: $title, body: $body, userId: $userId}) {
+    update_note(uid: $uid, note: {title: $title, body: $body, userId: $userId}) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -85,13 +85,13 @@ export const updateNote = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const deleteNote = gql`
   mutation DeleteNote($uid: Int!) {
-    delete_post(uid: $uid) {
+    delete_note(uid: $uid) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -99,13 +99,13 @@ export const deleteNote = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const createNoteLabel = gql`
   mutation createNoteLabel($uid: Int!, $label_id: Int!) {
-    create_post_label(uid: $uid, label_id: $label_id) {
+    create_note_label(uid: $uid, label_id: $label_id) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -113,13 +113,13 @@ export const createNoteLabel = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `
 
 export const deleteNoteLabel = gql`
   mutation deleteNoteLabel($uid: Int!, $label_id: Int!) {
-    delete_post_label(uid: $uid, label_id: $label_id) {
+    delete_note_label(uid: $uid, label_id: $label_id) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -127,6 +127,6 @@ export const deleteNoteLabel = gql`
       }
     }
   }
-  ${postReadAttributes}
-  ${postWriteAttributes}
+  ${noteReadAttributes}
+  ${noteWriteAttributes}
 `

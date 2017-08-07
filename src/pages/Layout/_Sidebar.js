@@ -19,8 +19,8 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
       <Menu
         id='main-nav'
         mode='inline'
-        defaultSelectedKeys={['posts']}
-        defaultOpenKeys={['posts']}
+        defaultSelectedKeys={['notes']}
+        defaultOpenKeys={['notes']}
       >
         <Menu.Item key='0'>
           <Link to='/'>
@@ -30,8 +30,8 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
             </span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='posts'>
-          <Link to='/posts'>
+        <Menu.Item key='notes'>
+          <Link to='/notes'>
             <Icon type='mail' />
             <span className='nav-text'>
               Notes

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 import { includes, map } from 'lodash'
 import { getLabels } from '../../api/labels'
-import { createNoteLabel, deleteNoteLabel } from '../../api/posts'
+import { createNoteLabel, deleteNoteLabel } from '../../api/notes'
 import { clearCache } from '../../helpers/cache'
 import { notification } from '../../helpers/notification'
 import { Button, Popover } from 'antd'
@@ -20,10 +20,10 @@ class NoteLabel extends Component {
       data: { labels },
       onCreate,
       onDelete,
-      post
+      note
     } = this.props
 
-    const postLabelIds = map(post.labels, 'id')
+    const noteLabelIds = map(note.labels, 'id')
     const updateVisibility = (value) => this.setState({ visible: value })
 
     const onClick = async (event, label) => {
@@ -31,10 +31,10 @@ class NoteLabel extends Component {
         event.preventDefault()
       }
 
-      const connected = includes(postLabelIds, label.id)
+      const connected = includes(noteLabelIds, label.id)
       const variables = {
         label_id: parseInt(label.id, 10),
-        uid: post.uid
+        uid: note.uid
       }
 
       let message

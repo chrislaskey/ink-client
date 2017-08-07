@@ -111,11 +111,11 @@ hr {
     font-size: 32px;
   }
 
-#all-posts {
+#all-notes {
   flex-shrink: 0;
 }
 
-#one-post {
+#one-note {
   width: 100%;
 }
 
@@ -162,21 +162,21 @@ a.ant-btn {
 
 /* Specific Content */
 
-.unselected-post-message {
+.unselected-note-message {
   color: rgba(0, 0, 0, 0.15);
   font-size: 28px;
 }
 
-ul.posts {
+ul.notes {
   margin: 0px;
   padding: 0px;
 }
 
-  ul.posts li {
+  ul.notes li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-    ul.posts li a {
+    ul.notes li a {
       align-items: center;
       color: rgba(0, 0, 0, 0.65);
       display: flex;
@@ -184,44 +184,44 @@ ul.posts {
       width: 100%;
     }
 
-      ul.posts li a:active,
-      ul.posts li a:focus {
+      ul.notes li a:active,
+      ul.notes li a:focus {
         text-decoration: none;
       }
 
-.post-body ul {
+.note-body ul {
   list-style-type: disc;
   list-style-position: inside;
 }
 
-  .post-body ul ul,
-  .post-body ol ul {
+  .note-body ul ul,
+  .note-body ol ul {
     list-style-type: circle;
     list-style-position: inside;
     margin-left: 15px;
   }
 
-  .post-body .task-list-item {
+  .note-body .task-list-item {
     margin-left: 15px;
   }
 
-.post-body ol {
+.note-body ol {
    list-style-type: decimal;
    list-style-position: inside;
 }
 
-  .post-body ol ol,
-  .post-body ul ol {
+  .note-body ol ol,
+  .note-body ul ol {
     list-style-type: lower-latin;
     list-style-position: inside;
     margin-left: 15px;
   }
 
-.post-body pre {
+.note-body pre {
   position: relative;
 }
 
-  .post-body pre a.copy-code-to-clipboard {
+  .note-body pre a.copy-code-to-clipboard {
     color: rgba(0, 0, 0, 0.3);
     font-size: 16px;
     position: absolute;
@@ -229,11 +229,11 @@ ul.posts {
     top: 0px;
   }
 
-    .post-body pre:hover a.copy-code-to-clipboard {
+    .note-body pre:hover a.copy-code-to-clipboard {
       color: #108ee9;
     }
 
-form.post textarea[name='body'] {
+form.note textarea[name='body'] {
   font-family: Consolas, Menlo, Courier, monospace;
 }
 
