@@ -1,134 +1,122 @@
 import { gql } from 'react-apollo'
+import { labelAttributes } from './labels'
+import { userAttributes } from './user'
 
-export const noteReadAttributes = gql`
-  fragment NoteReadAttributes on Note {
+export const noteAttributes = gql`
+  fragment NoteAttributes on Note {
     uid
     secret
-    insertedAt
-    updatedAt
-  }
-`
-
-export const noteWriteAttributes = gql`
-  fragment NoteWriteAttributes on Note {
     title
     body
+    insertedAt
+    updatedAt
   }
 `
 
 export const getNotes = gql`
   query Notes {
     notes {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const getNote = gql`
   query Note($uid: Int!) {
     note(uid: $uid) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       labels {
-        id
-        color
-        name
+        ...LabelAttributes
       }
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${labelAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const getPublicNote = gql`
   query Note($uid: Int!, $secret: String!) {
     public_note(uid: $uid, secret: $secret) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const createNote = gql`
   mutation CreateNote($title: String!, $body: String!) {
     create_note(title: $title, body: $body) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const updateNote = gql`
   mutation UpdateNote($uid: Int!, $title: String!, $body: String!) {
     update_note(uid: $uid, note: {title: $title, body: $body}) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const deleteNote = gql`
   mutation DeleteNote($uid: Int!) {
     delete_note(uid: $uid) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const createNoteLabel = gql`
   mutation createNoteLabel($uid: Int!, $label_id: Int!) {
     create_note_label(uid: $uid, label_id: $label_id) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `
 
 export const deleteNoteLabel = gql`
   mutation deleteNoteLabel($uid: Int!, $label_id: Int!) {
     delete_note_label(uid: $uid, label_id: $label_id) {
-      ...NoteReadAttributes
-      ...NoteWriteAttributes
+      ...NoteAttributes
       user {
-        name
+        ...UserAttributes
       }
     }
   }
-  ${noteReadAttributes}
-  ${noteWriteAttributes}
+  ${noteAttributes}
+  ${userAttributes}
 `

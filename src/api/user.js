@@ -1,13 +1,8 @@
 import { gql } from 'react-apollo'
 
-export const userReadAttributes = gql`
-  fragment UserReadAttributes on User {
+export const userAttributes = gql`
+  fragment UserAttributes on User {
     id
-  }
-`
-
-export const userWriteAttributes = gql`
-  fragment UserWriteAttributes on User {
     email
     name
   }

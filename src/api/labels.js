@@ -1,13 +1,8 @@
 import { gql } from 'react-apollo'
 
-export const labelReadAttributes = gql`
-  fragment LabelReadAttributes on Label {
+export const labelAttributes = gql`
+  fragment LabelAttributes on Label {
     id
-  }
-`
-
-export const labelWriteAttributes = gql`
-  fragment LabelWriteAttributes on Label {
     name
     color
   }
@@ -16,54 +11,44 @@ export const labelWriteAttributes = gql`
 export const getLabels = gql`
   query Labels {
     labels {
-      ...LabelReadAttributes
-      ...LabelWriteAttributes
+      ...LabelAttributes
     }
   }
-  ${labelReadAttributes}
-  ${labelWriteAttributes}
+  ${labelAttributes}
 `
 
 export const getLabel = gql`
   query Label($id: Int!) {
     label(id: $id) {
-      ...LabelReadAttributes
-      ...LabelWriteAttributes
+      ...LabelAttributes
     }
   }
-  ${labelReadAttributes}
-  ${labelWriteAttributes}
+  ${labelAttributes}
 `
 
 export const createLabel = gql`
   mutation CreateLabel($color: String!, $name: String!) {
     create_label(color: $color, name: $name){
-      ...LabelReadAttributes
-      ...LabelWriteAttributes
+      ...LabelAttributes
     }
   }
-  ${labelReadAttributes}
-  ${labelWriteAttributes}
+  ${labelAttributes}
 `
 
 export const updateLabel = gql`
   mutation UpdateLabel($id: Int!, $name: String!, $color: String!) {
     update_label(id: $id, label: {name: $name, color: $color}) {
-      ...LabelReadAttributes
-      ...LabelWriteAttributes
+      ...LabelAttributes
     }
   }
-  ${labelReadAttributes}
-  ${labelWriteAttributes}
+  ${labelAttributes}
 `
 
 export const deleteLabel = gql`
   mutation DeleteLabel($id: Int!) {
     delete_label(id: $id) {
-      ...LabelReadAttributes
-      ...LabelWriteAttributes
+      ...LabelAttributes
     }
   }
-  ${labelReadAttributes}
-  ${labelWriteAttributes}
+  ${labelAttributes}
 `
