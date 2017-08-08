@@ -303,6 +303,7 @@ form.note textarea[name='body'] {
   .theme-dark #sidebar .ant-menu-submenu-title,
   .theme-dark #sidebar .ant-menu-item-group,
   .theme-dark #sidebar .ant-menu-item-group-title,
+  .theme-dark #sidebar .ant-menu-item-selected,
   .theme-dark #sidebar .ant-layout-sider-trigger {
     color: #fff;
   }
