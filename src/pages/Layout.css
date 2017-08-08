@@ -158,12 +158,15 @@ hr {
 
 /* Universal Content */
 
-a.ant-btn {
-  align-items: center;
+.ant-btn {
   border-radius: 0px !important;
-  display: inline-flex;
-  justify-content: center;
 }
+
+  a.ant-btn {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+  }
 
 .ant-popover-title {
   background: #f9f9f9;

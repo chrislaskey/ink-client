@@ -29,8 +29,8 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
         <Menu
           id='main-nav'
           mode='inline'
-          defaultSelectedKeys={['notes2']}
-          defaultOpenKeys={['notes2']}
+          defaultSelectedKeys={['notes']}
+          defaultOpenKeys={['notes']}
         >
           <Menu.Item key='0'>
             <Link to='/'>
@@ -44,8 +44,11 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
             key='notes'
             title={<Link to='/notes'><Icon type='mail' /><span className='nav-text'> Notes</span></Link>}
           >
-            <Menu.Item key='1'>
-              <Link to='/notes'>All</Link>
+            <Menu.Item key='new-note'>
+              <Link to='/notes/new'>New Note</Link>
+            </Menu.Item>
+            <Menu.Item key='notes'>
+              <Link to='/notes'>All Notes</Link>
             </Menu.Item>
             <Menu.ItemGroup key='labels' title='Labels'>
               {map(labels, renderLabel)}
