@@ -8,10 +8,6 @@ hr {
   border-bottom: 0px;
 }
 
-.ant-btn {
-  border-radius: 0px !important;
-}
-
 /* Structural Styles */
 
 .window-height {
@@ -156,8 +152,16 @@ hr {
 
 a.ant-btn {
   align-items: center;
+  border-radius: 0px !important;
   display: inline-flex;
   justify-content: center;
+}
+
+.ant-popover-title {
+  background: #f9f9f9;
+  color: #333;
+  font-size: 13px;
+  padding: 8px 16px;
 }
 
 /* Specific Content */
@@ -236,6 +240,37 @@ ul.notes {
 form.note textarea[name='body'] {
   font-family: Consolas, Menlo, Courier, monospace;
 }
+
+.note-label-dropdown {
+
+}
+
+  .note-label-dropdown .labels {
+    margin: -8px -16px 0px -16px;
+    padding: 4px 16px;
+  }
+
+    .note-label-dropdown .labels li a {
+      color: #333;
+      display: block;
+      padding: 4px 0px;
+    }
+
+    .note-label-dropdown .labels li.active a {
+      color: #108ee9;
+    }
+
+  .note-label-dropdown .footer {
+    background: #f9f9f9;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    margin: -0px -16px -8px -16px;
+    padding: 8px 16px;
+  }
+
+    .note-label-dropdown .footer a {
+      color: #333;
+    }
 
 /* Themes */
 

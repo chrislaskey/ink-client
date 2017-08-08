@@ -7,6 +7,10 @@ export const url = (path = '/') => (
 
 // Labels
 
+export const labelsPath = () => (
+  '/labels'
+)
+
 export const labelNewPath = () => (
   '/labels/new'
 )
