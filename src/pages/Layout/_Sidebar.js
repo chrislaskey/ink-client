@@ -7,10 +7,12 @@ import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
 import { updatePreferences } from '../../actions/currentUser'
 import { getPreference } from '../../reducers/currentUser'
+import StatusDot from '../../components/StatusDot'
 
 export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) => {
-  const renderLabel = (label) => (
+  const renderNoteLabel = (label) => (
     <Menu.Item key={'label-' + label.id}>
+      <StatusDot color={label.color} />
       {label.name}
     </Menu.Item>
   )
@@ -50,10 +52,16 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
             <Menu.Item key='notes'>
               <Link to='/notes'>All Notes</Link>
             </Menu.Item>
-            <Menu.ItemGroup key='labels' title='Labels'>
-              {map(labels, renderLabel)}
-            </Menu.ItemGroup>
+            { map(labels, renderNoteLabel) }
           </Menu.SubMenu>
+          <Menu.Item key='labels'>
+            <Link to='/labels'>
+              <Icon type='tags-o' />
+              <span className='nav-text'>
+                Labels
+              </span>
+            </Link>
+          </Menu.Item>
           <Menu.Item key='settings'>
             <Link to='/settings'>
               <Icon type='setting' />

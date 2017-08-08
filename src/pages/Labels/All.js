@@ -34,7 +34,7 @@ export const AllLabels = ({data: {loading, labels}, match}) => {
 
   return (
     <Section padded id='all-labels' heading={heading}>
-      <Table dataSource={labels} columns={columns} />
+      <Table dataSource={labels} columns={columns} rowKey='id' />
     </Section>
   )
 }
