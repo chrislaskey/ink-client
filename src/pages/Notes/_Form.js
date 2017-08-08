@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { getCurrentUserId } from '../../reducers/currentUser'
 import { Button, Form, Input, Popconfirm } from 'antd'
 
 const TitleInput = (props) => (
@@ -58,10 +57,7 @@ const ReduxForm = reduxForm({
 })(NotesForm)
 
 const mapStateToProps = (state, props) => ({
-  initialValues: {
-    ...(props.initialValues || {}),
-    userId: getCurrentUserId(state)
-  }
+  initialValues: props.initialValues || {}
 })
 
 export default connect(mapStateToProps)(ReduxForm)

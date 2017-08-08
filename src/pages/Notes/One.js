@@ -1,8 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { compose, graphql } from 'react-apollo'
 import { getNote, updateNote } from '../../api/notes'
-import { getCurrentUserId } from '../../reducers/currentUser'
 import { withVarsFromProps } from '../../helpers/graphql'
 import { noteEditPath, publicNotePath, publicNoteUrl } from '../../helpers/paths'
 import ButtonLink from '../../components/ButtonLink'
@@ -13,7 +11,7 @@ import Share from './_Share'
 import { Heading, Section } from '../../components/Section'
 import { Button, Tooltip } from 'antd'
 
-export const OneNote = ({data: {loading, note}, mutate, userId}) => {
+export const OneNote = ({data: {loading, note}, mutate}) => {
   if (loading) {
     return <Section heading={<Heading />} />
   }
@@ -22,8 +20,7 @@ export const OneNote = ({data: {loading, note}, mutate, userId}) => {
     variables: {
       uid: note.uid,
       title: note.title,
-      body: updatedBody,
-      userId: userId
+      body: updatedBody
     }
   })
 
@@ -61,8 +58,4 @@ const OneNoteWithData = compose(
   graphql(updateNote)
 )(OneNote)
 
-const mapStateToProps = (state) => ({
-  userId: getCurrentUserId(state)
-})
-
-export default connect(mapStateToProps)(OneNoteWithData)
+export default OneNoteWithData

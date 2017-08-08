@@ -24,8 +24,7 @@ export const EditNote = ({data: {loading, note}, mutate}) => {
   const initialValues = {
     uid: note.uid,
     title: note.title,
-    body: note.body,
-    userId: note.user.id
+    body: note.body
   }
 
   return (
