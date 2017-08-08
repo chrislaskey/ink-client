@@ -19,8 +19,8 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
       <Menu
         id='main-nav'
         mode='inline'
-        defaultSelectedKeys={['notes']}
-        defaultOpenKeys={['notes']}
+        defaultSelectedKeys={['notes2']}
+        defaultOpenKeys={['notes2']}
       >
         <Menu.Item key='0'>
           <Link to='/'>
@@ -30,14 +30,18 @@ export const Sidebar = ({ sidebarCollapsed, toggleSidebar }) => (
             </span>
           </Link>
         </Menu.Item>
-        <Menu.Item key='notes'>
-          <Link to='/notes'>
-            <Icon type='mail' />
-            <span className='nav-text'>
-              Notes
-            </span>
-          </Link>
-        </Menu.Item>
+        <Menu.SubMenu
+          key='notes'
+          title={<Link to='/notes'><Icon type='mail'/><span className='nav-text'> Notes</span></Link>}
+        >
+          <Menu.Item key='1'>
+            <Link to='/notes'>All</Link>
+          </Menu.Item>
+          <Menu.ItemGroup key='labels' title='Labels'>
+            <Menu.Item key='one'>One</Menu.Item>
+            <Menu.Item key='two'>Two</Menu.Item>
+          </Menu.ItemGroup>
+        </Menu.SubMenu>
         <Menu.Item key='settings'>
           <Link to='/settings'>
             <Icon type='setting' />

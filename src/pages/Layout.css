@@ -117,7 +117,9 @@ hr {
 
 /* Sidebar */
 
+#sidebar .ant-menu-submenu-inline,
 #sidebar .ant-menu-inline,
+#sidebar .ant-menu-submenu-vertical,
 #sidebar .ant-menu-vertical {
   background: inherit;
   border-right: none;
@@ -130,6 +132,12 @@ hr {
 #sidebar .ant-menu-inline .ant-menu-selected:after {
   display: none;
 }
+
+  #sidebar .ant-menu-submenu-title,
+  #sidebar .ant-menu-item {
+    border-left: 3px solid rgba(0, 0, 0, 0);
+    max-width: 100%;
+  }
 
   #sidebar .ant-menu-item > a,
   #sidebar .ant-menu-submenu-title > a {
@@ -292,6 +300,9 @@ form.note textarea[name='body'] {
 
   .theme-dark #sidebar,
   .theme-dark #sidebar a,
+  .theme-dark #sidebar .ant-menu-submenu-title,
+  .theme-dark #sidebar .ant-menu-item-group,
+  .theme-dark #sidebar .ant-menu-item-group-title,
   .theme-dark #sidebar .ant-layout-sider-trigger {
     color: #fff;
   }
