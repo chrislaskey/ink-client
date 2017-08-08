@@ -24,14 +24,44 @@ export const getLabels = gql`
   ${labelWriteAttributes}
 `
 
-export const createLabel = gql`
-  mutation CreateLabel($name: String!, $userId: Int!) {
-    create_label(name: $title, userId: $userId){
+export const getLabel = gql`
+  query Label($id: Int!) {
+    label(id: $id) {
       ...LabelReadAttributes
       ...LabelWriteAttributes
-      user {
-        name
-      }
+    }
+  }
+  ${labelReadAttributes}
+  ${labelWriteAttributes}
+`
+
+export const createLabel = gql`
+  mutation CreateLabel($color: String!, $name: String!) {
+    create_label(color: $color, name: $name){
+      ...LabelReadAttributes
+      ...LabelWriteAttributes
+    }
+  }
+  ${labelReadAttributes}
+  ${labelWriteAttributes}
+`
+
+export const updateLabel = gql`
+  mutation UpdateLabel($id: Int!, $name: String!, $color: String!) {
+    update_label(id: $id, label: {name: $name, color: $color}) {
+      ...LabelReadAttributes
+      ...LabelWriteAttributes
+    }
+  }
+  ${labelReadAttributes}
+  ${labelWriteAttributes}
+`
+
+export const deleteLabel = gql`
+  mutation DeleteLabel($id: Int!) {
+    delete_label(id: $id) {
+      ...LabelReadAttributes
+      ...LabelWriteAttributes
     }
   }
   ${labelReadAttributes}

@@ -64,8 +64,8 @@ export const getPublicNote = gql`
 `
 
 export const createNote = gql`
-  mutation CreateNote($title: String!, $body: String!, $userId: Int!) {
-    create_note(title: $title, body: $body, userId: $userId) {
+  mutation CreateNote($title: String!, $body: String!) {
+    create_note(title: $title, body: $body) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {
@@ -78,8 +78,8 @@ export const createNote = gql`
 `
 
 export const updateNote = gql`
-  mutation UpdateNote($uid: Int!, $title: String!, $body: String!, $userId: Int!) {
-    update_note(uid: $uid, note: {title: $title, body: $body, userId: $userId}) {
+  mutation UpdateNote($uid: Int!, $title: String!, $body: String!) {
+    update_note(uid: $uid, note: {title: $title, body: $body}) {
       ...NoteReadAttributes
       ...NoteWriteAttributes
       user {

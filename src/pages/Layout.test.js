@@ -50,7 +50,7 @@ describe('Layout Component', () => {
     })
 
     it('renders routes', () => {
-      expect(subject.find('Route').length).toBe(6)
+      expect(subject.find('Route').length).toBe(7)
     })
   })
 })

@@ -9,6 +9,7 @@ import DraggableBanner from './Layout/_DraggableBanner'
 import './Layout.css'
 
 import Home from './Home/Index'
+import Labels from './Labels'
 import Login from './Login'
 import Notes from './Notes'
 import Public from './Public'
@@ -33,6 +34,7 @@ export const Layout = ({ loggedIn }) => {
         <Route component={Sidebar} />
       </Switch>
       <Route exact path='/' component={Home} />
+      <Route path='/labels' component={Labels} />
       <Route path='/notes' component={Notes} />
       <Route path='/public' component={Public} />
       <Route path='/settings' component={Settings} />

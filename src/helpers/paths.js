@@ -5,6 +5,18 @@ export const url = (path = '/') => (
   join(parser(window.location).origin, path)
 )
 
+// Labels
+
+export const labelNewPath = () => (
+  '/labels/new'
+)
+
+export const labelEditPath = (note) => (
+  '/labels/' + note.id + '/edit'
+)
+
+// Notes
+
 export const noteEditPath = (note) => (
   '/notes/' + note.uid + '/edit'
 )
