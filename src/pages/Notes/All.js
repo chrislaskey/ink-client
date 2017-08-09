@@ -1,20 +1,12 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { map } from 'lodash'
 import { Link } from 'react-router-dom'
 import { getNotes } from '../../api/notes'
-import { Icon, Tooltip } from 'antd'
 import { Heading, Section } from '../../components/Section'
+import NotesList from './_List'
+import { Icon, Tooltip } from 'antd'
 
 export const AllNotes = ({data: {loading, notes}, match}) => {
-  const renderNotes = (items) => (
-    map(items, (item) => (
-      <li key={item.uid}>
-        <Link to={match.url + '/' + item.uid}>{item.title}</Link>
-      </li>
-    ))
-  )
-
   const heading = (
     <Heading>
       <h3>Notes</h3>
@@ -28,9 +20,7 @@ export const AllNotes = ({data: {loading, notes}, match}) => {
 
   return (
     <Section id='all-notes' heading={heading} width='340px'>
-      <ul className='notes'>
-        {renderNotes(notes)}
-      </ul>
+      <NotesList notes={notes} path={match.url} />
     </Section>
   )
 }

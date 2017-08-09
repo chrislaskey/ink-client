@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Page from '../../components/Page'
 
-import AllNotes from './_All'
+import AllNotes from './All'
 import EditNote from './Edit'
 import NewNote from './New'
 import OneNote from './One'
