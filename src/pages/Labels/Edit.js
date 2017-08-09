@@ -14,7 +14,7 @@ export const EditLabel = ({data: {loading, label}, mutate}) => {
     await mutate({ variables: values })
     clearCache()
     notification('Successfully edited label', 'success')
-    history.push('/labels/' + label.id)
+    history.push('/labels')
   }
 
   if (loading) {

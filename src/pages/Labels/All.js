@@ -28,7 +28,7 @@ export const AllLabels = ({data: {loading, labels}, match}) => {
 
   const columns = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'Color', dataIndex: 'age', key: 'color' },
+    { title: 'Color', dataIndex: 'color', key: 'color' },
     { title: 'Actions', dataIndex: 'actions', render: actionColumn }
   ]
 
