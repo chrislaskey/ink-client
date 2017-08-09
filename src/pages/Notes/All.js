@@ -7,6 +7,10 @@ import NotesList from './_List'
 import { Icon, Tooltip } from 'antd'
 
 export const AllNotes = ({data: {loading, notes}, match}) => {
+  if (loading) {
+    return <Section loading width='340px' />
+  }
+
   const heading = (
     <Heading>
       <h3>Notes</h3>
