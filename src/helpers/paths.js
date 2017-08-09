@@ -15,8 +15,12 @@ export const labelNewPath = () => (
   '/labels/new'
 )
 
-export const labelEditPath = (note) => (
-  '/labels/' + note.id + '/edit'
+export const labelEditPath = (label) => (
+  '/labels/' + label.id + '/edit'
+)
+
+export const labelNotesPath = (label) => (
+  '/labels/' + label.id + '/notes'
 )
 
 // Notes

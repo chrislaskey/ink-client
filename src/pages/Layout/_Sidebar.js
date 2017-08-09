@@ -6,14 +6,17 @@ import { getLabels } from '../../api/labels'
 import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
 import { updatePreferences } from '../../actions/currentUser'
+import { labelNotesPath } from '../../helpers/paths'
 import { getPreference } from '../../reducers/currentUser'
 import StatusDot from '../../components/StatusDot'
 
 export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) => {
   const renderNoteLabel = (label) => (
     <Menu.Item key={'label-' + label.id}>
-      <StatusDot color={label.color} />
-      {label.name}
+      <Link to={labelNotesPath(label)}>
+        <StatusDot color={label.color} />
+        {label.name}
+      </Link>
     </Menu.Item>
   )
 

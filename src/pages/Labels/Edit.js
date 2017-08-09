@@ -9,7 +9,7 @@ import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
 
 export const EditLabel = ({data: {loading, label}, mutate}) => {
-  const onCancel = () => history.push('/labels/' + label.id)
+  const onCancel = () => history.push('/labels')
   const onSubmit = async (values) => {
     await mutate({ variables: values })
     clearCache()
