@@ -1,5 +1,5 @@
 import { gql } from 'react-apollo'
-import { userAttributes } from './user'
+import { userAttributes } from './attributes'
 
 export const login = gql`
   mutation Login($email: String!, $password: String!) {

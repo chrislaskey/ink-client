@@ -5,7 +5,7 @@ import { withVarsFromProps } from '../../helpers/graphql'
 import { Heading, Section } from '../../components/Section'
 import NotesList from '../Notes/_List'
 
-export const LabelNotes = ({data: {label, loading, notes}, match}) => {
+export const LabelNotes = ({data: {label, loading}, match}) => {
   if (loading) {
     return <Section loading width='340px' />
   }
@@ -18,7 +18,7 @@ export const LabelNotes = ({data: {label, loading, notes}, match}) => {
 
   return (
     <Section id='label-notes' heading={heading} width='340px'>
-      <NotesList notes={notes || []} path={match.url} />
+      <NotesList notes={label.notes} path={match.url} />
     </Section>
   )
 }

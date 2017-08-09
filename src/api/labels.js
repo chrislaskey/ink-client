@@ -1,12 +1,5 @@
 import { gql } from 'react-apollo'
-
-export const labelAttributes = gql`
-  fragment LabelAttributes on Label {
-    id
-    name
-    color
-  }
-`
+import { labelAttributes, noteAttributes } from './attributes'
 
 export const getLabels = gql`
   query Labels {
@@ -21,9 +14,13 @@ export const getLabel = gql`
   query Label($id: Int!) {
     label(id: $id) {
       ...LabelAttributes
+      notes {
+        ...NoteAttributes
+      }
     }
   }
   ${labelAttributes}
+  ${noteAttributes}
 `
 
 export const createLabel = gql`

@@ -1,17 +1,5 @@
 import { gql } from 'react-apollo'
-import { labelAttributes } from './labels'
-import { userAttributes } from './user'
-
-export const noteAttributes = gql`
-  fragment NoteAttributes on Note {
-    uid
-    secret
-    title
-    body
-    insertedAt
-    updatedAt
-  }
-`
+import { labelAttributes, noteAttributes, userAttributes } from './attributes'
 
 export const getNotes = gql`
   query Notes {
