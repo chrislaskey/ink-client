@@ -3,6 +3,7 @@ import { compose, graphql } from 'react-apollo'
 import { getLabel } from '../../api/labels'
 import { withVarsFromProps } from '../../helpers/graphql'
 import { Heading, Section } from '../../components/Section'
+import ButtonLink from '../../components/ButtonLink'
 import NotesList from '../Notes/_List'
 import { Icon } from 'antd'
 
@@ -18,6 +19,10 @@ export const LabelNotes = ({data: {label, loading}, match}) => {
         {' '}
         {label.name}
       </h3>
+      <ButtonLink
+        icon='edit'
+        to={'/labels/' + label.id + '/edit'}
+      />
     </Heading>
   )
 

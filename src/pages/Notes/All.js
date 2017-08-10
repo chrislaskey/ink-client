@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { Link } from 'react-router-dom'
 import { getNotes } from '../../api/notes'
 import { Heading, Section } from '../../components/Section'
+import ButtonLink from '../../components/ButtonLink'
 import NotesList from './_List'
-import { Icon, Tooltip } from 'antd'
+import { Tooltip } from 'antd'
 
 export const AllNotes = ({data: {loading, notes}, match}) => {
   if (loading) {
@@ -15,9 +15,7 @@ export const AllNotes = ({data: {loading, notes}, match}) => {
     <Heading>
       <h3>All Notes</h3>
       <Tooltip placement='bottom' title='Create New Note'>
-        <Link className='ant-btn ant-btn-icon-only' to='/notes/new'>
-          <Icon type='edit' style={{ fontSize: '16px' }} />
-        </Link>
+        <ButtonLink icon='plus' to='/notes/new' />
       </Tooltip>
     </Heading>
   )
