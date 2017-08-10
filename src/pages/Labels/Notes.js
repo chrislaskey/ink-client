@@ -4,6 +4,7 @@ import { getLabel } from '../../api/labels'
 import { withVarsFromProps } from '../../helpers/graphql'
 import { Heading, Section } from '../../components/Section'
 import NotesList from '../Notes/_List'
+import { Icon } from 'antd'
 
 export const LabelNotes = ({data: {label, loading}, match}) => {
   if (loading) {
@@ -12,7 +13,11 @@ export const LabelNotes = ({data: {label, loading}, match}) => {
 
   const heading = (
     <Heading>
-      <h3>{label.name}</h3>
+      <h3>
+        <Icon type='tag-o' style={{ fontSize: '14px' }} />
+        {' '}
+        {label.name}
+      </h3>
     </Heading>
   )
 

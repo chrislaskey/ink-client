@@ -13,7 +13,7 @@ export const AllNotes = ({data: {loading, notes}, match}) => {
 
   const heading = (
     <Heading>
-      <h3>Notes</h3>
+      <h3>All Notes</h3>
       <Tooltip placement='bottom' title='Create New Note'>
         <Link className='ant-btn ant-btn-icon-only' to='/notes/new'>
           <Icon type='edit' style={{ fontSize: '16px' }} />
