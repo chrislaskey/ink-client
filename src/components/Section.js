@@ -13,7 +13,11 @@ export const Section = ({ children, heading, id, loading, padded, width }) => {
     <div
       id={id}
       className='section window-height'
-      style={{ width: width || '100%' }}
+      style={{
+        minWidth: width || 'inherit',
+        maxWidth: width || 'inherit',
+        width: width || '100%'
+      }}
     >
       <div className='section-heading'>
         { heading }
