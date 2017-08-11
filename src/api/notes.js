@@ -14,6 +14,19 @@ export const getNotes = gql`
   ${userAttributes}
 `
 
+export const searchNotes = gql`
+  query SearchNotes($search: String!) {
+    searchNotes(search: $search) {
+      ...NoteAttributes
+      user {
+        ...UserAttributes
+      }
+    }
+  }
+  ${noteAttributes}
+  ${userAttributes}
+`
+
 export const getNote = gql`
   query Note($uid: Int!) {
     note(uid: $uid) {

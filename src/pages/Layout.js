@@ -13,6 +13,7 @@ import Labels from './Labels'
 import Login from './Login'
 import Notes from './Notes'
 import Public from './Public'
+import Search from './Search'
 import Settings from './Settings'
 
 export const Layout = ({ loggedIn }) => {
@@ -37,6 +38,7 @@ export const Layout = ({ loggedIn }) => {
       <Route path='/labels' component={Labels} />
       <Route path='/notes' component={Notes} />
       <Route path='/public' component={Public} />
+      <Route path='/search' component={Search} />
       <Route path='/settings' component={Settings} />
     </LayoutComponent>
   )

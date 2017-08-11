@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import history from '../../app/history'
 import { createFlashMessage } from '../../actions/flashMessages'
 import { logout } from '../../actions/currentUser'
-import { Button } from 'antd'
+import { Button, Icon } from 'antd'
 
 export const Logout = ({ flashMessage, onLogOut }) => {
   const onClick = () => {
@@ -14,6 +14,8 @@ export const Logout = ({ flashMessage, onLogOut }) => {
 
   return (
     <Button onClick={onClick}>
+      <Icon type='logout' />
+      {' '}
       Log Out
     </Button>
   )
