@@ -7,25 +7,20 @@ import { Heading, Section } from '../../components/Section'
 import ButtonLink from '../../components/ButtonLink'
 import SearchForm from './_Form'
 import NotesList from '../Notes/_List'
-import { Icon } from 'antd'
 
 export const SearchNotes = ({data: {loading, searchNotes: notes}, match}) => {
   if (loading) {
     return <Section loading width='340px' />
   }
 
-  const onSubmit = (data) => {
-    history.push('/search/' + data.search)
-  }
+  const onSearch = (search) => history.push('/search/' + search)
 
   const heading = (
     <Heading>
       <h3>
-        <Icon type='search' style={{ fontSize: '14px' }} />
-        {' '}
         <SearchForm
-          initialValues={{ search: match.params.search }}
-          onSubmit={onSubmit}
+          defaultValue={match.params.search}
+          onSearch={onSearch}
         />
       </h3>
       <ButtonLink icon='close' to='/search' />
