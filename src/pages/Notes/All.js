@@ -16,7 +16,7 @@ export const AllNotes = ({data: {loading, notes}, match}) => {
     <Heading>
       <h3>All Notes</h3>
       <Tooltip placement='bottom' title='Create New Note'>
-        <ButtonLink icon='plus' to='/notes/new' />
+        <ButtonLink icon='file-add' to='/notes/new' />
       </Tooltip>
     </Heading>
   )
