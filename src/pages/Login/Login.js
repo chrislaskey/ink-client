@@ -8,6 +8,7 @@ import history from '../../app/history'
 import Page from '../../components/Page'
 import Redirect from '../../components/Redirect'
 import LoginForm from './_LoginForm'
+import { Button } from 'antd'
 
 export const Login = ({ location, loggedIn, mutate, onLogin }) => {
   const landingPage = location.pathname !== '/' ? location.pathname : '/notes'
@@ -24,10 +25,25 @@ export const Login = ({ location, loggedIn, mutate, onLogin }) => {
     history.push(landingPage)
   }
 
+  const onFacebookLogin = () => {
+    const clientId = '124042831558199'
+    const redirectUri = window.location.origin + '/login/facebook/callback'
+    const url = [
+      'https://www.facebook.com/v2.10/dialog/oauth',
+      '?client_id=' + clientId,
+      '&response_type=code',
+      '&scope=email,public_profile',
+      '&redirect_uri=' + redirectUri
+    ].join('')
+
+    window.location = url
+  }
+
   return (
     <Page className='center-children window-height'>
       <div className='padded' style={{ backgroundColor: '#fff' }}>
         <h1>Login</h1>
+        <Button onClick={onFacebookLogin}>Log in with Facebook</Button>
         <LoginForm onSubmit={onSubmit} />
       </div>
     </Page>

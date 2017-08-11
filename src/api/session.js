@@ -13,3 +13,16 @@ export const login = gql`
   }
   ${userAttributes}
 `
+
+export const logInWithProvider = gql`
+  mutation LogInWithProvider($code: String!, $provider: String!) {
+    logInWithProvider(code: $code, provider: $provider) {
+      token
+      token_expiration
+      user {
+        ...UserAttributes
+      }
+    }
+  }
+  ${userAttributes}
+`
