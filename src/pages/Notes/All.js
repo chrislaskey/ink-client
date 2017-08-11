@@ -4,6 +4,7 @@ import { getNotes } from '../../api/notes'
 import { Heading, Section } from '../../components/Section'
 import ButtonLink from '../../components/ButtonLink'
 import NotesList from './_List'
+import SearchForm from '../Search/_Form'
 import { Tooltip } from 'antd'
 
 export const AllNotes = ({data: {loading, notes}, match}) => {
@@ -22,6 +23,7 @@ export const AllNotes = ({data: {loading, notes}, match}) => {
 
   return (
     <Section id='all-notes' heading={heading} width='340px'>
+      <SearchForm />
       <NotesList notes={notes} path={match.url} />
     </Section>
   )

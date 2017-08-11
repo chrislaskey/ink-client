@@ -1,7 +1,11 @@
 import React from 'react'
+import ButtonLink from '../../components/ButtonLink'
 import { Form, Input } from 'antd'
+import history from '../../app/history'
 
-export const SearchForm = ({ defaultValue, onSearch }) => (
+const onSearch = (search) => history.push('/search/' + search)
+
+export const SearchForm = ({ defaultValue }) => (
   <Form className='search'>
     <Input.Search
       defaultValue={defaultValue}
@@ -10,6 +14,7 @@ export const SearchForm = ({ defaultValue, onSearch }) => (
       placeholder='Search'
       type='text'
     />
+    <ButtonLink icon='close' to='/notes' />
   </Form>
 )
 
