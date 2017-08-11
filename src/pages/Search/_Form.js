@@ -3,7 +3,11 @@ import ButtonLink from '../../components/ButtonLink'
 import { Form, Input } from 'antd'
 import history from '../../app/history'
 
-const onSearch = (search) => history.push('/search/' + search)
+const onSearch = (search) => {
+  if (search) {
+    history.push('/search/' + search)
+  }
+}
 
 export const SearchForm = ({ defaultValue }) => (
   <Form className='search'>
