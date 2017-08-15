@@ -9,7 +9,7 @@ import { queryString } from '../../helpers/paths'
 import Page from '../../components/Page'
 import Redirect from '../../components/Redirect'
 
-export const Callback = ({ loggedIn, mutate, onLogin }) => {
+export const Callback = ({ loggedIn, match, mutate, onLogin }) => {
   const landingPage = '/notes'
 
   if (loggedIn) {
@@ -17,8 +17,11 @@ export const Callback = ({ loggedIn, mutate, onLogin }) => {
   }
 
   const code = queryString().code
+  const provider = match.params.provider
+  const redirectUri = window.location.origin + '/login/' + provider + '/callback'
   const logIn = async (code) => {
-    const response = await mutate({ variables: code })
+    const variables = { code: code, provider: provider, redirectUri: redirectUri }
+    const response = await mutate({ variables: variables })
     const { token, token_expiration, user } = response.data.logInWithProvider
 
     onLogin({ token, token_expiration, ...user })

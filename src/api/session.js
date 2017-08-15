@@ -15,8 +15,8 @@ export const login = gql`
 `
 
 export const logInWithProvider = gql`
-  mutation LogInWithProvider($code: String!, $provider: String!) {
-    logInWithProvider(code: $code, provider: $provider) {
+  mutation LogInWithProvider($code: String!, $provider: String!, $redirectUri: String!) {
+    logInWithProvider(code: $code, provider: $provider, redirectUri: $redirectUri) {
       token
       token_expiration
       user {
