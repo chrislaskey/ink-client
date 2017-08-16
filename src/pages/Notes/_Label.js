@@ -97,7 +97,7 @@ class NoteLabel extends Component {
 }
 
 const NoteLabelWithData = compose(
-  graphql(getLabels),
+  graphql(getLabels, { options: { fetchPolicy: 'cache-and-network' } }),
   graphql(createNoteLabel, { name: 'onCreate' }),
   graphql(deleteNoteLabel, { name: 'onDelete' })
 )(NoteLabel)

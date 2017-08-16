@@ -16,6 +16,7 @@ export const labelAttributes = gql`
     id
     name
     color
+    note_count
   }
 `
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { graphql } from 'react-apollo'
+import { compose, graphql } from 'react-apollo'
 import { map } from 'lodash'
 import { getLabels } from '../../api/labels'
 import { Link } from 'react-router-dom'
@@ -16,6 +16,7 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
       <Link to={labelNotesPath(label)}>
         <StatusDot color={label.color} />
         {label.name}
+        <span className='label-note-count'> {label.note_count}</span>
       </Link>
     </Menu.Item>
   )
@@ -81,7 +82,9 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
 
 Sidebar.displayName = 'Sidebar'
 
-const SidebarWithData = graphql(getLabels)(Sidebar)
+const SidebarWithData = compose(
+  graphql(getLabels, { options: { fetchPolicy: 'cache-and-network' } })
+)(Sidebar)
 
 const mapStateToProps = (state) => {
   const sidebarDefault = window.innerWidth <= 1000

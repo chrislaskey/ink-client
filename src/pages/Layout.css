@@ -176,13 +176,13 @@ hr {
 }
 
 .ant-input {
-  border-radius: 0px;
+  border-radius: 0px !important;
 }
 
 form.search {
   border-bottom: 1px solid #eee;
   display: flex;
-  padding: 10px 30px 10px 25px;
+  padding: 10px 30px 10px 23px;
 }
 
   form.search input {
