@@ -175,6 +175,25 @@ hr {
   padding: 8px 16px;
 }
 
+.ant-input {
+  border-radius: 0px;
+}
+
+form.search {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  padding: 10px 30px 10px 25px;
+}
+
+  form.search input {
+    border: none;
+    border-radius: 0px;
+  }
+
+  form.search .ant-btn {
+    border: none;
+  }
+
 /* Specific Content */
 
 .unselected-note-message {
