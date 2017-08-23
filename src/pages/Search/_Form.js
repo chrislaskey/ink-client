@@ -18,7 +18,7 @@ export const SearchForm = ({ defaultValue }) => (
       placeholder='Search'
       type='text'
     />
-    <ButtonLink icon='close' to='/notes' />
+    {defaultValue && <ButtonLink icon='close' to='/notes' />}
   </Form>
 )
 
