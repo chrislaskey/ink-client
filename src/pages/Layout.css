@@ -157,6 +157,22 @@ hr {
   color: #333;
 }
 
+#sidebar ul ul {
+  margin-bottom: 12px;
+}
+
+#sidebar ul ul li {
+  height: 36px;
+}
+
+  #sidebar ul ul li a {
+    height: 36px;
+  }
+
+  #sidebar .status-dot {
+    margin-right: 13px;
+  }
+
 /* Universal Content */
 
 .ant-btn {
@@ -271,6 +287,22 @@ ul.notes {
 form.note textarea[name='body'] {
   font-family: Consolas, Menlo, Courier, monospace;
 }
+
+.label-color {
+  display: flex;
+  justify-content: left;
+  line-height: 24px;
+}
+
+  .label-color span {
+    border-radius: 4px;
+    float: left;
+    height: 24px;
+    margin: 0px 6px 6px 0px;
+    outline: none;
+    position: relative;
+    width: 24px;
+  }
 
 .note-label-dropdown {
 

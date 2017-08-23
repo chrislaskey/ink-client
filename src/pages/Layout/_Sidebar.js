@@ -51,11 +51,14 @@ export const Sidebar = ({ data: { labels }, location, sidebarCollapsed, toggleSi
             key='notes'
             title={<Link to='/notes'><Icon type='mail' /><span className='nav-text'> Notes</span></Link>}
           >
-            <Menu.Item key='new-note'>
-              <Link to='/notes/new'>New Note</Link>
-            </Menu.Item>
             <Menu.Item key='all-notes'>
-              <Link to='/notes'>All Notes</Link>
+              <Link to='/notes'>All</Link>
+            </Menu.Item>
+            <Menu.Item key='new-note'>
+              <Link to='/notes/new'>
+                <Icon type='file-add' />
+                <span>New</span>
+              </Link>
             </Menu.Item>
             { map(labels, renderNoteLabel) }
           </Menu.SubMenu>

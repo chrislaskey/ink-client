@@ -8,6 +8,7 @@ export const activeKeys = (currentPath) => {
     '/notes/(.*)': ['notes', 'all-notes'],
     '/notes': ['notes', 'all-notes'],
     '/labels/(.*)/notes': ['notes'],
+    '/labels/(.*)/notes/.*': ['notes'],
     '/labels/(.*)': ['labels'],
     '/labels/new': ['labels'],
     '/labels/(.*)/edit': ['labels'],
