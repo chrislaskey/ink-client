@@ -146,6 +146,7 @@ hr {
   }
 
   #sidebar .ant-menu-inline .ant-menu-item-selected,
+  #sidebar .ant-menu-vertical .ant-menu-submenu-open .ant-menu-submenu-title,
   #sidebar .ant-menu-vertical .ant-menu-item-selected {
     background-color: inherit;
     border-left: 3px solid #108ee9;

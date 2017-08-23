@@ -6,13 +6,14 @@ import { getLabels } from '../../api/labels'
 import { Link } from 'react-router-dom'
 import { Icon, Layout, Menu } from 'antd'
 import { updatePreferences } from '../../actions/currentUser'
+import { activeKeys } from '../../helpers/nav'
 import { labelNotesPath } from '../../helpers/paths'
 import { getPreference } from '../../reducers/currentUser'
 import StatusDot from '../../components/StatusDot'
 
-export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) => {
+export const Sidebar = ({ data: { labels }, location, sidebarCollapsed, toggleSidebar }) => {
   const renderNoteLabel = (label) => (
-    <Menu.Item key={'label-' + label.id}>
+    <Menu.Item key={label.id}>
       <Link to={labelNotesPath(label)}>
         <StatusDot color={label.color} />
         {label.name}
@@ -35,10 +36,10 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
         <Menu
           id='main-nav'
           mode='inline'
-          defaultSelectedKeys={['notes']}
-          defaultOpenKeys={['notes']}
+          openKeys={activeKeys(location.pathname)}
+          selectedKeys={activeKeys(location.pathname)}
         >
-          <Menu.Item key='0'>
+          <Menu.Item key='home'>
             <Link to='/'>
               <Icon type='home' />
               <span className='nav-text'>
@@ -53,7 +54,7 @@ export const Sidebar = ({ data: { labels }, sidebarCollapsed, toggleSidebar }) =
             <Menu.Item key='new-note'>
               <Link to='/notes/new'>New Note</Link>
             </Menu.Item>
-            <Menu.Item key='notes'>
+            <Menu.Item key='all-notes'>
               <Link to='/notes'>All Notes</Link>
             </Menu.Item>
             { map(labels, renderNoteLabel) }
