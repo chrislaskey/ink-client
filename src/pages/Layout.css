@@ -240,6 +240,10 @@ ul.notes {
         text-decoration: none;
       }
 
+      ul.notes li.active a {
+        border-right: 3px solid #108ee9;
+      }
+
 .note-body ul {
   list-style-type: disc;
   list-style-position: inside;
