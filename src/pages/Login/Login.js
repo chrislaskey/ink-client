@@ -39,11 +39,23 @@ export const Login = ({ location, loggedIn, mutate, onLogin }) => {
     window.location = url
   }
 
+  const onGitHubLogin = () => {
+    const clientId = '5a4237e25f982eb0d267'
+    const url = [
+      'https://github.com/login/oauth/authorize',
+      '?client_id=' + clientId,
+      '&scope=user'
+    ].join('')
+
+    window.location = url
+  }
+
   return (
     <Page className='center-children window-height'>
       <div className='padded' style={{ backgroundColor: '#fff' }}>
         <h1>Login</h1>
         <Button onClick={onFacebookLogin}>Log in with Facebook</Button>
+        <Button onClick={onGitHubLogin}>Log in with GitHub</Button>
         <LoginForm onSubmit={onSubmit} />
       </div>
     </Page>
