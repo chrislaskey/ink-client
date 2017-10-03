@@ -44,7 +44,7 @@ export const Login = ({ location, loggedIn, mutate, onLogin }) => {
     const url = [
       'https://github.com/login/oauth/authorize',
       '?client_id=' + clientId,
-      '&scope=user'
+      '&scope=user:email'
     ].join('')
 
     window.location = url
