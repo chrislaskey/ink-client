@@ -3,7 +3,7 @@ import { compose, graphql } from 'react-apollo'
 import history from '../../app/history'
 import { withVarsFromProps } from '../../helpers/graphql'
 import { notification } from '../../helpers/notification'
-import { clearCache } from '../../helpers/cache'
+import { resetStore } from '../../app/graphql'
 import { getNote, updateNote } from '../../api/notes'
 import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
@@ -12,7 +12,7 @@ export const EditNote = ({data: {loading, note}, mutate}) => {
   const onCancel = () => history.push('/notes/' + note.uid)
   const onSubmit = async (values) => {
     await mutate({ variables: values })
-    clearCache()
+    resetStore('api')
     notification('Successfully edited note', 'success')
     history.push('/notes/' + note.uid)
   }

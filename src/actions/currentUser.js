@@ -1,7 +1,7 @@
-import { clearCache } from '../helpers/cache'
+import { resetStore } from '../app/graphql'
 import { deleteToken, updateToken } from '../helpers/token'
 
-export const login = (values) => {
+export const logIn = (values) => {
   updateToken(values.token)
 
   return {
@@ -10,9 +10,9 @@ export const login = (values) => {
   }
 }
 
-export const logout = () => {
+export const logOut = () => {
   deleteToken()
-  clearCache()
+  resetStore('api')
 
   return {
     type: 'CURRENT_USER_LOGOUT'

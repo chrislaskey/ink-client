@@ -4,7 +4,7 @@ import { includes, map } from 'lodash'
 import { Link } from 'react-router-dom'
 import { getLabels } from '../../api/labels'
 import { createNoteLabel, deleteNoteLabel } from '../../api/notes'
-import { clearCache } from '../../helpers/cache'
+import { resetStore } from '../../app/graphql'
 import { labelsPath } from '../../helpers/paths'
 import { notification } from '../../helpers/notification'
 import { Button, Icon, Popover } from 'antd'
@@ -49,7 +49,7 @@ class NoteLabel extends Component {
         await onCreate({ variables: variables })
       }
 
-      clearCache()
+      resetStore('api')
       notification(message, 'success')
       updateVisibility(false)
     }

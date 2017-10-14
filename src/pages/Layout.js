@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { isLoggedIn } from '../reducers/currentUser'
 import { Layout as LayoutComponent } from 'antd'
+import ApolloClient from '../components/ApolloClient'
 import FlashMessages from '../components/FlashMessages'
 import Sidebar from './Layout/_Sidebar'
 import DraggableBanner from './Layout/_DraggableBanner'
@@ -30,16 +31,18 @@ export const Layout = ({ loggedIn }) => {
     <LayoutComponent className='ant-layout-has-sider window-height theme-dark'>
       <DraggableBanner />
       <FlashMessages />
-      <Switch>
-        <Route path='/public' component={null} />
-        <Route component={Sidebar} />
-      </Switch>
-      <Route exact path='/' component={Home} />
-      <Route path='/labels' component={Labels} />
-      <Route path='/notes' component={Notes} />
-      <Route path='/public' component={Public} />
-      <Route path='/search' component={Search} />
-      <Route path='/settings' component={Settings} />
+      <ApolloClient client='api'>
+        <Switch>
+          <Route path='/public' component={null} />
+          <Route component={Sidebar} />
+        </Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/labels' component={Labels} />
+        <Route path='/notes' component={Notes} />
+        <Route path='/public' component={Public} />
+        <Route path='/search' component={Search} />
+        <Route path='/settings' component={Settings} />
+      </ApolloClient>
     </LayoutComponent>
   )
 }
