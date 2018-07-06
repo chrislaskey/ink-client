@@ -27,8 +27,8 @@ const createApolloClient = (uri) => {
 }
 
 export const clients = {
-  api: createApolloClient('http://api.ink.dev'),
-  oauth2: createApolloClient('http://oauth2.ink.dev')
+  api: createApolloClient('https://api.ink.dev'),
+  oauth2: createApolloClient('https://oauth2.ink.dev')
 }
 
 export const resetStore = (key) => clients[key].resetStore()
