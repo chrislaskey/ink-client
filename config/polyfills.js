@@ -1,5 +1,9 @@
 'use strict';
 
+global.requestAnimationFrame = (callback) => {
+  setTimeout(callback, 0)
+}
+
 if (typeof Promise === 'undefined') {
   // Rejection tracking prevents a common issue where React gets into an
   // inconsistent state due to an error, but it gets swallowed by a Promise,
