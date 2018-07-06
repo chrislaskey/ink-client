@@ -119,13 +119,13 @@ hr {
 
 #sidebar .logo-heading a {
   display: flex;
-  font-size: 24px;
   margin-left: -2px;
   width: 100%;
 }
 
   #sidebar .logo-heading a i {
     align-self: center;
+    font-size: 18px;
     transform: rotate(0deg);
   }
 
@@ -137,6 +137,10 @@ hr {
     margin-left: 10px;
     text-transform: uppercase;
   }
+
+    #sidebar.ant-layout-sider-collapsed .logo-heading a {
+      margin-left: 0;
+    }
 
     #sidebar.ant-layout-sider-collapsed .logo-heading a span {
       display: none;
