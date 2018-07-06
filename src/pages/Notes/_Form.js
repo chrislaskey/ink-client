@@ -30,25 +30,27 @@ export const NotesForm = ({handleSubmit, pristine, onCancel, submitting}) => (
       <label htmlFor='body'>Body</label>
       <Field name='body' component={BodyTextarea} />
     </Form.Item>
-    <Button
-      type='primary'
-      htmlType='submit'
-      loading={submitting}
-      disabled={pristine || submitting}
-    >
-      Submit
-    </Button>
-    <Popconfirm
-      title='Confirm Cancel?'
-      onConfirm={onCancel}
-      onCancel={() => true}
-      okText='Leave Page'
-      cancelText='Stay on Page'
-    >
-      <Button>
-        Cancel
+    <div className='form-actions'>
+      <Button
+        type='primary'
+        htmlType='submit'
+        loading={submitting}
+        disabled={pristine || submitting}
+      >
+        Submit
       </Button>
-    </Popconfirm>
+      <Popconfirm
+        title='Confirm Cancel?'
+        onConfirm={onCancel}
+        onCancel={() => true}
+        okText='Leave Page'
+        cancelText='Stay on Page'
+      >
+        <Button>
+          Cancel
+        </Button>
+      </Popconfirm>
+    </div>
   </Form>
 )
 

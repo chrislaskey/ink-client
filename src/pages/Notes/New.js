@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import history from '../../app/history'
 import { createNote } from '../../api/notes'
-import { clearCache } from '../../helpers/cache'
+import { resetStore } from '../../app/graphql'
 import { notification } from '../../helpers/notification'
 import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
@@ -12,7 +12,7 @@ export const NewNote = ({ mutate }) => {
   const onSubmit = async (values) => {
     const response = await mutate({ variables: values })
 
-    clearCache()
+    resetStore('api')
     notification('Successfully created new note', 'success')
     history.push('/notes/' + response.data.create_note.uid)
   }

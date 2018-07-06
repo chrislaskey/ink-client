@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import history from '../../app/history'
-import { clearCache } from '../../helpers/cache'
+import { resetStore } from '../../app/graphql'
 import { notification } from '../../helpers/notification'
 import { deleteLabel } from '../../api/labels'
 import { Button, Popconfirm, Tooltip } from 'antd'
@@ -13,7 +13,7 @@ export const DeleteLabel = ({ mutate, label }) => {
         id: label.id
       }
     })
-    clearCache()
+    resetStore('api')
     notification('Successfully deleted label', 'warning')
     history.push('/labels')
   }

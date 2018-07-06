@@ -3,7 +3,7 @@ import { compose, graphql } from 'react-apollo'
 import history from '../../app/history'
 import { withVarsFromProps } from '../../helpers/graphql'
 import { notification } from '../../helpers/notification'
-import { clearCache } from '../../helpers/cache'
+import { resetStore } from '../../app/graphql'
 import { getLabel, updateLabel } from '../../api/labels'
 import { Heading, Section } from '../../components/Section'
 import Form from './_Form'
@@ -12,7 +12,7 @@ export const EditLabel = ({data: {loading, label}, mutate}) => {
   const onCancel = () => history.push('/labels')
   const onSubmit = async (values) => {
     await mutate({ variables: values })
-    clearCache()
+    resetStore('api')
     notification('Successfully edited label', 'success')
     history.push('/labels')
   }

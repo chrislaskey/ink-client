@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { compose, graphql } from 'react-apollo'
 import { logInWithProvider } from '../../api/session'
 import history from '../../app/history'
-import { login as loginCurrentUser } from '../../actions/currentUser'
+import { logIn as logInCurrentUser } from '../../actions/currentUser'
 import { isLoggedIn } from '../../reducers/currentUser'
 import { queryString } from '../../helpers/paths'
 import Page from '../../components/Page'
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onLogin: (data) => dispatch(loginCurrentUser(data))
+  onLogin: (data) => dispatch(logInCurrentUser(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CallbackWithData)

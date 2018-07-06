@@ -55,8 +55,8 @@ class Markdown extends Component {
   }
 
   render () {
-    const { options, value } = this.props
-    const html = markdownToHtml(value || '', options || {})
+    const { options = {}, value = '' } = this.props
+    const html = markdownToHtml(value, options)
 
     return (
       <div

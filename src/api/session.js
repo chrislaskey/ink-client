@@ -1,9 +1,9 @@
 import { gql } from 'react-apollo'
 import { userAttributes } from './attributes'
 
-export const login = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+export const logIn = gql`
+  mutation LogIn($email: String!, $password: String!) {
+    logIn(email: $email, password: $password) {
       token
       token_expiration
       user {

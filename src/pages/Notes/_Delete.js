@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import history from '../../app/history'
-import { clearCache } from '../../helpers/cache'
+import { resetStore } from '../../app/graphql'
 import { notification } from '../../helpers/notification'
 import { deleteNote } from '../../api/notes'
 import { Button, Popconfirm, Tooltip } from 'antd'
@@ -13,7 +13,7 @@ export const DeleteNote = ({ mutate, note }) => {
         uid: note.uid
       }
     })
-    clearCache()
+    resetStore('api')
     notification('Successfully deleted note', 'warning')
     history.push('/notes')
   }
