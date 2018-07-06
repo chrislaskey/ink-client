@@ -30,7 +30,12 @@ export const Sidebar = ({ data: { labels }, location, sidebarCollapsed, toggleSi
       collapsed={sidebarCollapsed}
       onCollapse={(collapsed) => toggleSidebar(collapsed)}
     >
-      <div className='section-heading' />
+      <div className='section-heading logo-heading'>
+        <a href='/'>
+          <Icon type='api' />
+          <span>Ink Notebook</span>
+        </a>
+      </div>
       <div className='scroll-container'>
         <Menu
           id='main-nav'
