@@ -82,6 +82,7 @@
     "electron": "electron config/electron.js"
   },
   "standard": {
+    "parser": "babel-eslint",
     "ignore": [
       "config",
       "scripts",
