@@ -6,7 +6,12 @@ import '../lib/showdown-highlightjs-extension'
 export const createParser = (passedOptions = {}) => {
   showdown.setFlavor('github')
 
+  const defaultOptions = {
+    tasklists: true
+  }
+
   return new showdown.Converter({
+    ...defaultOptions,
     ...passedOptions,
     extensions: ['highlightjs']
   })

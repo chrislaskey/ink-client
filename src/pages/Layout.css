@@ -47,7 +47,7 @@ hr {
   }
 
     #sidebar #main-nav {
-      padding-top: 30px;
+      padding-top: 10px;
     }
 
 #page {
@@ -89,7 +89,6 @@ hr {
         color: #788495;
         font-size: 16px;
         font-weight: 500;
-        line-height: 1.1;
         margin: 0;
       }
 
@@ -144,6 +143,7 @@ hr {
   #sidebar .ant-menu-submenu-title > a {
     color: rgba(0, 0, 0, 0.65);
     display: block;
+    margin-left: -3px;
   }
 
   #sidebar .ant-menu-inline .ant-menu-item-selected,
@@ -163,11 +163,12 @@ hr {
 }
 
 #sidebar ul ul li {
-  height: 36px;
+  height: 28px;
 }
 
   #sidebar ul ul li a {
-    height: 36px;
+    height: 28px;
+    line-height: 32px;
   }
 
   #sidebar .status-dot {
@@ -212,6 +213,14 @@ form.search {
     border: none;
   }
 
+.ant-form-item {
+  margin-bottom: 0 !important;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
 /* Specific Content */
 
 .unselected-note-message {
@@ -232,7 +241,7 @@ ul.notes {
       align-items: center;
       color: rgba(0, 0, 0, 0.65);
       display: flex;
-      padding: 30px 30px;
+      padding: 15px 30px;
       width: 100%;
     }
 

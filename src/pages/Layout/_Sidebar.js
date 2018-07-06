@@ -35,7 +35,7 @@ export const Sidebar = ({ data: { labels }, location, sidebarCollapsed, toggleSi
         <Menu
           id='main-nav'
           mode='inline'
-          openKeys={activeKeys(location.pathname)}
+          openKeys={sidebarCollapsed ? [] : activeKeys(location.pathname)}
           selectedKeys={activeKeys(location.pathname)}
         >
           <Menu.Item key='home'>
@@ -55,7 +55,6 @@ export const Sidebar = ({ data: { labels }, location, sidebarCollapsed, toggleSi
             </Menu.Item>
             <Menu.Item key='new-note'>
               <Link to='/notes/new'>
-                <Icon type='file-add' />
                 <span>New</span>
               </Link>
             </Menu.Item>
