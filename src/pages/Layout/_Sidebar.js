@@ -29,7 +29,6 @@ export const Sidebar = ({ data: { labels }, location, sidebarCollapsed, toggleSi
       collapsible
       collapsed={sidebarCollapsed}
       onCollapse={(collapsed) => toggleSidebar(collapsed)}
-      width='240'
     >
       <div className='section-heading' />
       <div className='scroll-container'>

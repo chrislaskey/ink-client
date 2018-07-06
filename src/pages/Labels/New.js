@@ -14,7 +14,7 @@ export const NewLabel = ({ mutate }) => {
 
     resetStore('api')
     notification('Successfully created new label', 'success')
-    history.push('/labels/' + response.data.create_label.id)
+    history.push('/labels')
   }
 
   return (
