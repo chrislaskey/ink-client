@@ -10,8 +10,7 @@ import Form from './_Form'
 export const NewLabel = ({ mutate }) => {
   const onCancel = () => history.push('/labels')
   const onSubmit = async (values) => {
-    const response = await mutate({ variables: values })
-
+    await mutate({ variables: values })
     resetStore('api')
     notification('Successfully created new label', 'success')
     history.push('/labels')

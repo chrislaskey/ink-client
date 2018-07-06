@@ -21,7 +21,10 @@ export const Note = ({ onCheck, note }) => (
       </p>
     </div>
     <div className='note-body'>
-      <Markdown onCheck={onCheck} value={note.body} />
+      <Markdown
+        onCheck={onCheck}
+        value={note.body}
+      />
     </div>
   </div>
 )
