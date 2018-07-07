@@ -8,6 +8,7 @@ import DeleteNote from './_Delete'
 import Label from './_Label'
 import Note from './_Note'
 import Share from './_Share'
+import { resetStore } from '../../app/graphql'
 import { Heading, Section } from '../../components/Section'
 import { Button, Tooltip } from 'antd'
 
@@ -16,13 +17,17 @@ export const OneNote = ({data: {loading, note}, mutate}) => {
     return <Section heading={<Heading />} />
   }
 
-  const onCheck = (updatedBody) => mutate({
-    variables: {
-      uid: note.uid,
-      title: note.title,
-      body: updatedBody
-    }
-  })
+  const onCheck = async (updatedBody) => {
+    await mutate({
+      variables: {
+        uid: note.uid,
+        title: note.title,
+        body: updatedBody
+      }
+    })
+
+    resetStore('api')
+  }
 
   const heading = (
     <Heading>
